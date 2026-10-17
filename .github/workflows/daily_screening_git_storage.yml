@@ -177,3 +177,10 @@ jobs:
               echo "  No changes committed"
             fi
           fi
+      - name: Send report to Telegram
+        if: always()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
+          -F chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -F document=@"data/daily_scans/latest_optimized_scan.txt" \
+          -F caption="📈 Ежедневный отчет сканера готов!"
