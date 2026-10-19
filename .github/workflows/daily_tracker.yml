@@ -42,6 +42,6 @@ jobs:
           
           echo "2. Отправляем запрос в Telegram API (тест с фейковым ID):"
           curl -v -X POST "https://api.telegram.org/bot8539392402:AAEwtlYVrRWM8tY1JdDiHSm27uTY_tba9IA/sendDocument" \
-          -F chat_id="123456789" \
+          -F chat_id="1003282935541" \
           -F document=@"trading_journal.xlsx" \
           -F caption="📊 Тест отправки"
