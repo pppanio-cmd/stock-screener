@@ -34,7 +34,11 @@ jobs:
 
       - name: Send Excel to Telegram
         run: |
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
-          -F chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          echo "1. Проверяем наличие файла:"
+          ls -la trading_journal.xlsx
+          
+          echo "2. Отправляем запрос в Telegram API (тест с фейковым ID):"
+          curl -v -X POST "https://api.telegram.org/bot8539392402:AAEwtlYVrRWM8tY1JdDiHSm27uTY_tba9IA/sendDocument" \
+          -F chat_id="123456789" \
           -F document=@"trading_journal.xlsx" \
-          -F caption="📊 Ежедневный отчет по вашему портфелю ($500) готов!"
+          -F caption="📊 Тест отправки"
