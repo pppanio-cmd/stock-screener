@@ -84,6 +84,25 @@ def update_journal():
 
     df.to_excel(EXCEL_FILE, index=False)
     print("Журнал обновлен в облаке!")
+    
+    # ВЫЗЫВАЕМ РАСЧЕТ БАЛАНСА
+    calculate_balance(df)
+
+def calculate_balance(df):
+    cash = INITIAL_BALANCE
+    for _, row in df.iterrows():
+        if row['Status'] in ['OPEN', 'WIN', 'LOSS']:
+            cash -= row['Invested']
+        if row['Status'] in ['WIN', 'LOSS']:
+            cash += (row['Invested'] + row['PnL_$'])
+            
+    open_value = sum(row['Shares'] * row['Current_Price'] for _, row in df[df['Status'] == 'OPEN'].iterrows() if pd.notna(row['Current_Price']))
+    total_equity = cash + open_value
+    total_profit = total_equity - INITIAL_BALANCE
+    
+    # Записываем в файл summary.txt, который потом прочитает GitHub Actions
+    with open("summary.txt", "w", encoding="utf-8") as f:
+        f.write(f"Старт: ${INITIAL_BALANCE:.2f} | Кэш: ${cash:.2f} | Активы: ${open_value:.2f} | Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}")
 
 if __name__ == "__main__":
     update_journal()
