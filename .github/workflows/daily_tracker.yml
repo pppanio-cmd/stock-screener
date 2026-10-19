@@ -35,13 +35,11 @@ jobs:
 
       - name: Send Excel to Telegram
         run: |
-          # 1. Отправляем текст с балансом
           SUMMARY=$(cat summary.txt)
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
           -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
           -d text="💰 Ваш портфель: $SUMMARY"
           
-          # 2. Отправляем сам Excel-файл
           curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
           -F chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
           -F document=@"trading_journal.xlsx" \
