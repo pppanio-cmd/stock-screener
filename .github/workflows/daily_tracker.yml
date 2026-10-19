@@ -1,8 +1,8 @@
 name: Daily Trade Tracker
 on:
   schedule:
-    - cron: '0 23 * * 1-5' # Запуск каждый день в 23:00 UTC (после закрытия рынка США)
-  workflow_dispatch: # Позволяет запускать вручную
+    - cron: '0 23 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   track:
@@ -30,18 +30,19 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add trading_journal.xlsx
           git diff --staged --quiet || git commit -m "Auto-update trade journal"
-          
-          # СИНХРОНИЗАЦИЯ ПЕРЕД ОТПРАВКОЙ (исправляет ошибку push)
           git pull --rebase origin main
           git push
 
       - name: Send Excel to Telegram
         run: |
-          echo "1. Проверяем наличие файла:"
-          ls -la trading_journal.xlsx
+          # 1. Отправляем текст с балансом
+          SUMMARY=$(cat summary.txt)
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d text="💰 Ваш портфель: $SUMMARY"
           
-          echo "2. Отправляем запрос в Telegram API (тест с фейковым ID):"
-          curl -v -X POST "https://api.telegram.org/bot8539392402:AAEwtlYVrRWM8tY1JdDiHSm27uTY_tba9IA/sendDocument" \
-          -F chat_id="836914527" \
+          # 2. Отправляем сам Excel-файл
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendDocument" \
+          -F chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
           -F document=@"trading_journal.xlsx" \
-          -F caption="📊 Тест отправки"
+          -F caption="📊 Ежедневный отчет по вашему портфелю ($500) готов!"
