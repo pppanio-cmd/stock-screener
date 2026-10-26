@@ -5,9 +5,10 @@ import re
 import glob
 from datetime import datetime
 
-EXCEL_FILE = "trading_journal.xlsx"
+# ИЗМЕНЕНО: Добавлен _v2, чтобы бот игнорировал старый файл с ошибками
+EXCEL_FILE = "trading_journal_v2.xlsx"
 INITIAL_BALANCE = 200.0       # Ваш депозит
-ALLOCATION_PERCENT = 0.5      # 50% от баланса
+ALLOCATION_PERCENT = 0.5      # 50% от баланса на сделку
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
@@ -57,7 +58,7 @@ def calculate_balance(df):
     open_value = total_equity - cash
     total_profit = total_equity - INITIAL_BALANCE
     
-    # Вот та самая строчка, которая создает файл!
+    # Создаем файл с отчетом
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(f"Старт: ${INITIAL_BALANCE:.2f} | Кэш: ${cash:.2f} | Активы: ${open_value:.2f} | Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}")
 
