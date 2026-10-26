@@ -6,8 +6,8 @@ import glob
 from datetime import datetime
 
 EXCEL_FILE = "trading_journal.xlsx"
-INITIAL_BALANCE = 500.0
-ALLOCATION_PER_TRADE = 100.0
+INITIAL_BALANCE = 200.0       # <--- ВАШ НОВЫЙ ДЕПОЗИТ
+ALLOCATION_PERCENT = 0.5      # <--- 50% от текущего баланса на сделку
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
@@ -35,6 +35,19 @@ def parse_signals(txt_path):
     sell_blocks = re.finditer(r"🚨 SELL #\d+: (\w+)", content, re.DOTALL)
     for block in sell_blocks: sells.add(block.group(1))
     return buys, sells
+
+def get_current_balance(df):
+    """Считает текущий депозит: свободный кэш + стоимость открытых позиций"""
+    cash = INITIAL_BALANCE
+    for _, row in df.iterrows():
+        if row['Status'] in ['OPEN', 'WIN', 'LOSS']:
+            cash -= row['Invested']
+        if row['Status'] in ['WIN', 'LOSS']:
+            cash += (row['Invested'] + row['PnL_$'])
+            
+    open_value = sum(row['Shares'] * row['Current_Price'] for _, row in df[df['Status'] == 'OPEN'].iterrows() if pd.notna(row['Current_Price']))
+    total_equity = cash + open_value
+    return total_equity, cash
 
 def update_journal():
     if os.path.exists(EXCEL_FILE): df = pd.read_excel(EXCEL_FILE)
@@ -68,8 +81,21 @@ def update_journal():
 
         if row['Status'] == 'PENDING':
             if current_price >= entry_price:
-                risk_per_share = entry_price - stop_loss
-                shares_to_buy = min(int((INITIAL_BALANCE * 0.02) // risk_per_share) if risk_per_share > 0 else 0, int(ALLOCATION_PER_TRADE // entry_price))
+                # Получаем текущий баланс и свободный кэш
+                current_equity, current_cash = get_current_balance(df)
+                
+                # Считаем лимит на сделку (50% от текущего депозита)
+                max_trade_value = current_equity * ALLOCATION_PERCENT
+                
+                # Сколько акций влезает в этот лимит
+                alloc_shares = int(max_trade_value // entry_price)
+                
+                # Сколько акций можем купить на свободный кэш (защита от минуса)
+                cash_shares = int(current_cash // entry_price)
+                
+                # Берем минимум, чтобы не потратить больше, чем есть, и не превысить 50%
+                shares_to_buy = min(alloc_shares, cash_shares)
+                
                 if shares_to_buy > 0:
                     df.at[index, 'Status'] = 'OPEN'
                     df.at[index, 'Shares'] = shares_to_buy
@@ -89,20 +115,10 @@ def update_journal():
     calculate_balance(df)
 
 def calculate_balance(df):
-    cash = INITIAL_BALANCE
-    for _, row in df.iterrows():
-        if row['Status'] in ['OPEN', 'WIN', 'LOSS']:
-            cash -= row['Invested']
-        if row['Status'] in ['WIN', 'LOSS']:
-            cash += (row['Invested'] + row['PnL_$'])
-            
-    open_value = sum(row['Shares'] * row['Current_Price'] for _, row in df[df['Status'] == 'OPEN'].iterrows() if pd.notna(row['Current_Price']))
-    total_equity = cash + open_value
+    total_equity, cash = get_current_balance(df)
+    open_value = total_equity - cash
     total_profit = total_equity - INITIAL_BALANCE
     
     # Записываем в файл summary.txt, который потом прочитает GitHub Actions
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(f"Старт: ${INITIAL_BALANCE:.2f} | Кэш: ${cash:.2f} | Активы: ${open_value:.2f} | Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}")
-
-if __name__ == "__main__":
-    update_journal()
