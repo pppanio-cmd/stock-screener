@@ -21,6 +21,11 @@ jobs:
       - name: Install dependencies
         run: pip install pandas openpyxl yfinance
 
+      # 🔥 ВОТ ЭТА СТРОКА УДАЛИТ СТАРЫЙ ЖУРНАЛ С ФЕЙКОВЫМИ $642
+      - name: Delete old journal to reset balance
+        run: rm -f trading_journal.xlsx
+      # --------------------------------------------------------
+
       - name: Run Tracker
         run: python tracker_cloud.py
 
@@ -40,8 +45,5 @@ jobs:
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
             -d text="💰 Ваш портфель: $SUMMARY"
           else
-            echo "Файл summary.txt не найден. Отправляем уведомление."
-            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="⚠️ Бот отработал, но файл summary.txt не создался. Возможно, не было новых сигналов."
+            echo "Файл summary.txt не найден."
           fi
