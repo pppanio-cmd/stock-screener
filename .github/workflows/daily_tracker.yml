@@ -29,24 +29,19 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
-          git add -f summary.txt
-          git commit -m "Auto-update trade journal" || echo "No changes"
+          git commit -m "Auto-update trade journal" || echo "No changes to commit"
           git push origin main --force
 
       - name: Send Excel to Telegram
         run: |
           if [ -f summary.txt ]; then
             SUMMARY=$(cat summary.txt)
-            echo "========================================"
-            echo "ТЕКСТ ДЛЯ ОТПРАВКИ: $SUMMARY"
-            echo "========================================"
-            
-            RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="💰 Ваш портфель: $SUMMARY")
-            
-            echo "ОТВЕТ ОТ TELEGRAM:"
-            echo "$RESPONSE"
+            -d text="💰 Ваш портфель: $SUMMARY"
           else
-            echo "❌ ОШИБКА: Файл summary.txt не был создан скриптом tracker_cloud.py"
+            echo "Файл summary.txt не найден. Отправляем уведомление."
+            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+            -d text="⚠️ Бот отработал, но файл summary.txt не создался. Возможно, не было новых сигналов."
           fi
