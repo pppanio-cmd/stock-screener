@@ -6,8 +6,8 @@ import glob
 from datetime import datetime
 
 EXCEL_FILE = "trading_journal.xlsx"
-INITIAL_BALANCE = 200.0       # <--- ВАШ НОВЫЙ ДЕПОЗИТ
-ALLOCATION_PERCENT = 0.5      # <--- 50% от текущего баланса на сделку
+INITIAL_BALANCE = 200.0       # Ваш депозит
+ALLOCATION_PERCENT = 0.5      # 50% от баланса
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
@@ -37,7 +37,9 @@ def parse_signals(txt_path):
     return buys, sells
 
 def get_current_balance(df):
-    """Считает текущий депозит: свободный кэш + стоимость открытых позиций"""
+    if df is None or df.empty:
+        return INITIAL_BALANCE, INITIAL_BALANCE
+        
     cash = INITIAL_BALANCE
     for _, row in df.iterrows():
         if row['Status'] in ['OPEN', 'WIN', 'LOSS']:
@@ -49,76 +51,80 @@ def get_current_balance(df):
     total_equity = cash + open_value
     return total_equity, cash
 
-def update_journal():
-    if os.path.exists(EXCEL_FILE): df = pd.read_excel(EXCEL_FILE)
-    else: df = pd.DataFrame(columns=['Ticker', 'Date_Added', 'Entry_Price', 'Stop_Loss', 'Target_Price', 'Status', 'Shares', 'Invested', 'Current_Price', 'Close_Price', 'PnL_%', 'PnL_$'])
-    
-    for col in ['Shares', 'Invested', 'PnL_$', 'Stop_Loss', 'Target_Price']:
-        if col not in df.columns: df[col] = 0.0
-    df.fillna({'Shares': 0, 'Invested': 0.0, 'PnL_$': 0.0, 'Stop_Loss': 0.0, 'Target_Price': 0.0}, inplace=True)
-
-    latest_txt = get_latest_scan_file()
-    new_buys, current_sells = parse_signals(latest_txt)
-
-    for ticker, data in new_buys.items():
-        if ticker not in df['Ticker'].values:
-            df = pd.concat([df, pd.DataFrame([{
-                'Ticker': ticker, 'Date_Added': datetime.now().strftime("%Y-%m-%d"),
-                'Entry_Price': data['entry'], 'Stop_Loss': data['stop'], 'Target_Price': data['target'],
-                'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 
-                'Close_Price': None, 'PnL_%': None, 'PnL_$': 0.0
-            }])], ignore_index=True)
-
-    active_mask = df['Status'].isin(['PENDING', 'OPEN'])
-    for index, row in df[active_mask].iterrows():
-        ticker, entry_price = row['Ticker'], row['Entry_Price']
-        stop_loss, target_price = row['Stop_Loss'], row['Target_Price']
-        current_price = get_current_price(ticker)
-        if current_price is None: continue
-
-        df.at[index, 'Current_Price'] = current_price
-        pnl_pct = ((current_price - entry_price) / entry_price) * 100
-
-        if row['Status'] == 'PENDING':
-            if current_price >= entry_price:
-                # Получаем текущий баланс и свободный кэш
-                current_equity, current_cash = get_current_balance(df)
-                
-                # Считаем лимит на сделку (50% от текущего депозита)
-                max_trade_value = current_equity * ALLOCATION_PERCENT
-                
-                # Сколько акций влезает в этот лимит
-                alloc_shares = int(max_trade_value // entry_price)
-                
-                # Сколько акций можем купить на свободный кэш (защита от минуса)
-                cash_shares = int(current_cash // entry_price)
-                
-                # Берем минимум, чтобы не потратить больше, чем есть, и не превысить 50%
-                shares_to_buy = min(alloc_shares, cash_shares)
-                
-                if shares_to_buy > 0:
-                    df.at[index, 'Status'] = 'OPEN'
-                    df.at[index, 'Shares'] = shares_to_buy
-                    df.at[index, 'Invested'] = round(shares_to_buy * entry_price, 2)
-
-        elif row['Status'] == 'OPEN':
-            df.at[index, 'PnL_%'] = round(pnl_pct, 2)
-            df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
-            if current_price <= stop_loss or current_price >= target_price:
-                df.at[index, 'Status'] = 'LOSS' if current_price <= stop_loss else 'WIN'
-                df.at[index, 'Close_Price'] = current_price
-
-    df.to_excel(EXCEL_FILE, index=False)
-    print("Журнал обновлен в облаке!")
-    
-    # ВЫЗЫВАЕМ РАСЧЕТ БАЛАНСА
-    calculate_balance(df)
-
 def calculate_balance(df):
+    """Считает баланс и ОБЯЗАТЕЛЬНО создает файл summary.txt"""
     total_equity, cash = get_current_balance(df)
     open_value = total_equity - cash
     total_profit = total_equity - INITIAL_BALANCE
     
-    # Записываем в файл summary.txt, который потом прочитает GitHub Actions
+    # Вот та самая строчка, которая создает файл!
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(f"Старт: ${INITIAL_BALANCE:.2f} | Кэш: ${cash:.2f} | Активы: ${open_value:.2f} | Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}")
+
+def update_journal():
+    df = pd.DataFrame(columns=['Ticker', 'Date_Added', 'Entry_Price', 'Stop_Loss', 'Target_Price', 'Status', 'Shares', 'Invested', 'Current_Price', 'Close_Price', 'PnL_%', 'PnL_$'])
+    
+    try:
+        if os.path.exists(EXCEL_FILE): 
+            df = pd.read_excel(EXCEL_FILE)
+            
+        for col in ['Shares', 'Invested', 'PnL_$', 'Stop_Loss', 'Target_Price']:
+            if col not in df.columns: df[col] = 0.0
+        df.fillna({'Shares': 0, 'Invested': 0.0, 'PnL_$': 0.0, 'Stop_Loss': 0.0, 'Target_Price': 0.0}, inplace=True)
+
+        latest_txt = get_latest_scan_file()
+        new_buys, current_sells = parse_signals(latest_txt)
+
+        for ticker, data in new_buys.items():
+            if ticker not in df['Ticker'].values:
+                df = pd.concat([df, pd.DataFrame([{
+                    'Ticker': ticker, 'Date_Added': datetime.now().strftime("%Y-%m-%d"),
+                    'Entry_Price': data['entry'], 'Stop_Loss': data['stop'], 'Target_Price': data['target'],
+                    'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 
+                    'Close_Price': None, 'PnL_%': None, 'PnL_$': 0.0
+                }])], ignore_index=True)
+
+        active_mask = df['Status'].isin(['PENDING', 'OPEN'])
+        for index, row in df[active_mask].iterrows():
+            ticker, entry_price = row['Ticker'], row['Entry_Price']
+            stop_loss, target_price = row['Stop_Loss'], row['Target_Price']
+            current_price = get_current_price(ticker)
+            if current_price is None: continue
+
+            df.at[index, 'Current_Price'] = current_price
+            pnl_pct = ((current_price - entry_price) / entry_price) * 100
+
+            if row['Status'] == 'PENDING':
+                if current_price >= entry_price:
+                    current_equity, current_cash = get_current_balance(df)
+                    max_trade_value = current_equity * ALLOCATION_PERCENT
+                    alloc_shares = int(max_trade_value // entry_price)
+                    cash_shares = int(current_cash // entry_price)
+                    shares_to_buy = min(alloc_shares, cash_shares)
+                    
+                    if shares_to_buy > 0:
+                        df.at[index, 'Status'] = 'OPEN'
+                        df.at[index, 'Shares'] = shares_to_buy
+                        df.at[index, 'Invested'] = round(shares_to_buy * entry_price, 2)
+
+            elif row['Status'] == 'OPEN':
+                df.at[index, 'PnL_%'] = round(pnl_pct, 2)
+                df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
+                if current_price <= stop_loss or current_price >= target_price:
+                    df.at[index, 'Status'] = 'LOSS' if current_price <= stop_loss else 'WIN'
+                    df.at[index, 'Close_Price'] = current_price
+
+        df.to_excel(EXCEL_FILE, index=False)
+        print("Журнал обновлен в облаке!")
+        
+    except Exception as e:
+        print(f"Ошибка при обновлении журнала: {e}")
+        
+    finally:
+        # Блок finally сработает ВСЕГДА, даже если выше была ошибка
+        print("Создаем файл summary.txt...")
+        calculate_balance(df)
+        print("Файл summary.txt успешно создан!")
+
+if __name__ == "__main__":
+    update_journal()
