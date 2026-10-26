@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -31,9 +29,8 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add trading_journal.xlsx summary.txt
-          git commit -m "Auto-update trade journal" || echo "No changes to commit"
-          git pull --rebase --autostash origin main
-          git push origin main
+          git commit -m "Auto-update trade journal" || echo "No changes"
+          git push origin main --force
 
       - name: Send Excel to Telegram
         run: |
