@@ -29,6 +29,7 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add .
+          git add -f summary.txt
           git commit -m "Auto-update trade journal" || echo "No changes"
           git push origin main --force
 
@@ -36,9 +37,16 @@ jobs:
         run: |
           if [ -f summary.txt ]; then
             SUMMARY=$(cat summary.txt)
-            curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+            echo "========================================"
+            echo "ТЕКСТ ДЛЯ ОТПРАВКИ: $SUMMARY"
+            echo "========================================"
+            
+            RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
             -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d text="💰 Ваш портфель: $SUMMARY"
+            -d text="💰 Ваш портфель: $SUMMARY")
+            
+            echo "ОТВЕТ ОТ TELEGRAM:"
+            echo "$RESPONSE"
           else
-            echo "Файл summary.txt не найден. Пропускаем отправку в Telegram."
+            echo "❌ ОШИБКА: Файл summary.txt не был создан скриптом tracker_cloud.py"
           fi
