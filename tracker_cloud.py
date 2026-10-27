@@ -6,9 +6,9 @@ import glob
 import time
 from datetime import datetime
 
-EXCEL_FILE = "trading_journal_v4.xlsx"
-INITIAL_BALANCE = 200.0
-ALLOCATION_PERCENT = 0.5
+EXCEL_FILE = "trading_journal_v4.xlsx"  # Ваш файл журнала
+INITIAL_BALANCE = 200.0                 # Стартовый депозит
+ALLOCATION_PERCENT = 0.5                # 50% на сделку
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
@@ -59,20 +59,29 @@ def calculate_balance(df, events):
     report = f"💰 Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}\n"
     report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
     
+    # ДОБАВЛЯЕМ БЛОК: Что сейчас в портфеле
+    if df is not None and not df.empty:
+        open_positions = df[df['Status'] == 'OPEN']
+        if not open_positions.empty:
+            report += "📈 АКЦИИ В ПОРТФЕЛЕ:\n"
+            for _, row in open_positions.iterrows():
+                pnl_sign = "+" if row['PnL_%'] >= 0 else ""
+                report += f"🔹 {row['Ticker']}: {int(row['Shares'])} шт. (Вход: ${row['Entry_Price']} -> Сейчас: ${row['Current_Price']}, PnL: {pnl_sign}{row['PnL_%']}%)\n"
+            report += "\n"
+
     if events:
         report += "📋 ДЕЙСТВИЯ БОТА ЗА СЕГОДНЯ:\n"
-        # Показываем последние 15 событий, чтобы не превысить лимит Телеграма
-        for ev in events[-15:]:
+        for ev in events[-10:]: # Показываем 10 последних событий
             report += f"{ev}\n"
     else:
-        report += "Нет новых сделок или сигналов."
+        report += "📋 Сегодня новых сделок не было (все сигналы устарели или не было сигналов).\n"
 
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(report)
 
 def update_journal():
     df = pd.DataFrame(columns=['Ticker', 'Date_Added', 'Entry_Price', 'Stop_Loss', 'Target_Price', 'Status', 'Shares', 'Invested', 'Current_Price', 'Close_Price', 'PnL_%', 'PnL_$'])
-    events = []  # <-- Список для логирования действий
+    events = []
     
     try:
         if os.path.exists(EXCEL_FILE): df = pd.read_excel(EXCEL_FILE)
@@ -83,8 +92,8 @@ def update_journal():
         latest_txt = get_latest_scan_file()
         new_buys, _ = parse_signals(latest_txt)
 
-        if not new_buys:
-            events.append("⏭ Нет свежих сигналов от сканера.")
+        if not new_buys and latest_txt:
+            events.append("⏭ Нет новых сигналов от сканера.")
 
         for ticker, data in new_buys.items():
             if ticker not in df['Ticker'].values:
@@ -107,7 +116,7 @@ def update_journal():
             pnl_pct = ((current_price - entry_price) / entry_price) * 100
 
             if row['Status'] == 'PENDING':
-                # Если цена пробила уровень, но не улетела выше +5%
+                # Защита: Покупаем, только если цена в диапазоне от сигнала до +5%
                 if entry_price <= current_price <= (entry_price * 1.05):
                     current_equity, current_cash = get_current_balance(df)
                     max_trade_value = current_equity * ALLOCATION_PERCENT
@@ -122,15 +131,14 @@ def update_journal():
                         df.at[index, 'Invested'] = round(shares_to_buy * current_price, 2)
                         events.append(f"🟢 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (на ${shares_to_buy * current_price:.2f})")
                     else:
-                        events.append(f"⏭ ПРОПУЩЕНО: {ticker} - не хватает кэша (Нужно: ${max_trade_value:.0f}, Есть: ${current_cash:.0f})")
+                        events.append(f"⏭ ПРОПУЩЕНО: {ticker} - не хватает кэша")
                 else:
-                    events.append(f"⏭ ПРОПУЩЕНО: {ticker} - цена уже улетела (Сигнал: ${entry_price}, Сейчас: ${current_price})")
+                    events.append(f"⏭ ПРОПУЩЕНО: {ticker} - цена улетела (Сигнал: ${entry_price}, Сейчас: ${current_price})")
 
             elif row['Status'] == 'OPEN':
                 df.at[index, 'PnL_%'] = round(pnl_pct, 2)
                 df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
                 
-                # Проверка закрытия по стопу или тейку
                 if current_price <= stop_loss:
                     df.at[index, 'Status'] = 'LOSS'
                     df.at[index, 'Close_Price'] = current_price
