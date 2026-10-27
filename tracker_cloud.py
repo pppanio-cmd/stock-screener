@@ -59,7 +59,7 @@ def calculate_balance(df, events):
     report = f"💰 Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}\n"
     report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
     
-    # ДОБАВЛЯЕМ БЛОК: Что сейчас в портфеле
+    # БЛОК: Что сейчас в портфеле (с добавленным Стопом и Тейком)
     if df is not None and not df.empty:
         open_positions = df[df['Status'] == 'OPEN']
         if not open_positions.empty:
@@ -67,6 +67,7 @@ def calculate_balance(df, events):
             for _, row in open_positions.iterrows():
                 pnl_sign = "+" if row['PnL_%'] >= 0 else ""
                 report += f"🔹 {row['Ticker']}: {int(row['Shares'])} шт. (Вход: ${row['Entry_Price']} -> Сейчас: ${row['Current_Price']}, PnL: {pnl_sign}{row['PnL_%']}%)\n"
+                report += f"   🛑 Стоп: ${row['Stop_Loss']} | 🎯 Тейк: ${row['Target_Price']}\n"
             report += "\n"
 
     if events:
@@ -95,6 +96,7 @@ def update_journal():
         if not new_buys and latest_txt:
             events.append("⏭ Нет новых сигналов от сканера.")
 
+        # Добавляем новые сигналы в таблицу
         for ticker, data in new_buys.items():
             if ticker not in df['Ticker'].values:
                 df = pd.concat([df, pd.DataFrame([{
@@ -103,6 +105,7 @@ def update_journal():
                     'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 'Close_Price': None, 'PnL_%': None, 'PnL_$': 0.0
                 }])], ignore_index=True)
 
+        # Обрабатываем активные сделки (PENDING и OPEN)
         active_mask = df['Status'].isin(['PENDING', 'OPEN'])
         for index, row in df[active_mask].iterrows():
             ticker, entry_price = row['Ticker'], row['Entry_Price']
@@ -139,6 +142,7 @@ def update_journal():
                 df.at[index, 'PnL_%'] = round(pnl_pct, 2)
                 df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
                 
+                # Проверка выхода по стопу или тейку
                 if current_price <= stop_loss:
                     df.at[index, 'Status'] = 'LOSS'
                     df.at[index, 'Close_Price'] = current_price
