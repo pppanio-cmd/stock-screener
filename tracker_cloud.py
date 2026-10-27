@@ -3,16 +3,26 @@ import yfinance as yf
 import os
 import re
 import glob
-from datetime import datetime
+import time
+from datetime import datetime, timedelta
 
-# ИЗМЕНЕНО: Добавлен _v2, чтобы бот игнорировал старый файл с ошибками
-EXCEL_FILE = "trading_journal_v2.xlsx"
-INITIAL_BALANCE = 200.0       # Ваш депозит
-ALLOCATION_PERCENT = 0.5      # 50% от баланса на сделку
+EXCEL_FILE = "trading_journal_v3.xlsx"  # Новая версия файла, чтобы точно сбросить старые данные
+INITIAL_BALANCE = 200.0
+ALLOCATION_PERCENT = 0.5
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
-    return files[0] if files else None
+    if not files:
+        return None
+        
+    file_path = files[0]
+    # ЗАЩИТА: Проверяем, когда файл был изменен. Если он старше 2 дней - не берем его!
+    file_age_seconds = time.time() - os.path.getmtime(file_path)
+    if file_age_seconds > 2 * 24 * 3600:
+        print(f"⚠️ Файл сканера слишком старый (от {datetime.fromtimestamp(os.path.getmtime(file_path)).strftime('%d.%m.%Y')}). Игнорируем.")
+        return None
+        
+    return file_path
 
 def get_current_price(ticker):
     try:
@@ -53,12 +63,10 @@ def get_current_balance(df):
     return total_equity, cash
 
 def calculate_balance(df):
-    """Считает баланс и ОБЯЗАТЕЛЬНО создает файл summary.txt"""
     total_equity, cash = get_current_balance(df)
     open_value = total_equity - cash
     total_profit = total_equity - INITIAL_BALANCE
     
-    # Создаем файл с отчетом
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(f"Старт: ${INITIAL_BALANCE:.2f} | Кэш: ${cash:.2f} | Активы: ${open_value:.2f} | Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}")
 
@@ -75,6 +83,9 @@ def update_journal():
 
         latest_txt = get_latest_scan_file()
         new_buys, current_sells = parse_signals(latest_txt)
+
+        if not new_buys:
+            print("Нет новых валидных сигналов для покупки.")
 
         for ticker, data in new_buys.items():
             if ticker not in df['Ticker'].values:
@@ -116,16 +127,12 @@ def update_journal():
                     df.at[index, 'Close_Price'] = current_price
 
         df.to_excel(EXCEL_FILE, index=False)
-        print("Журнал обновлен в облаке!")
         
     except Exception as e:
-        print(f"Ошибка при обновлении журнала: {e}")
+        print(f"Ошибка: {e}")
         
     finally:
-        # Блок finally сработает ВСЕГДА, даже если выше была ошибка
-        print("Создаем файл summary.txt...")
         calculate_balance(df)
-        print("Файл summary.txt успешно создан!")
 
 if __name__ == "__main__":
     update_journal()
