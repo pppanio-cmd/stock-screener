@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "KROS",
-    "fetch_date": "2026-10-20T16:48:35.851392",
+    "fetch_date": "2026-10-27T17:33:37.694437",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 18168000.0,
       "2025-09-30 00:00:00": 14262000.0,
@@ -23,5 +23,5 @@
     "operating_margin": 0,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-20T16:48:35.852002"
+  "fetched_at": "2026-10-27T17:33:37.695196"
 }

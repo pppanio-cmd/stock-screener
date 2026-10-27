@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "STAA",
-    "fetch_date": "2026-09-10T17:08:36.555745",
+    "fetch_date": "2026-10-27T17:54:53.939868",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 44320000.0,
@@ -26,7 +26,6 @@
     "margin_change": 0.92,
     "operating_margin": 10.8,
     "quarterly_inventory": {
-      "2024-12-31 00:00:00": NaN,
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 53107000.0,
       "2025-09-30 00:00:00": 53302000.0,
@@ -38,5 +37,5 @@
     "inventory_to_sales_ratio": 0.501,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-09-10T17:08:36.557396"
+  "fetched_at": "2026-10-27T17:54:53.941178"
 }

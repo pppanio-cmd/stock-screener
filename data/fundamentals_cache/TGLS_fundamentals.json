@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "TGLS",
-    "fetch_date": "2026-10-20T17:11:42.209468",
+    "fetch_date": "2026-10-27T17:56:43.291626",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 255546000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.92,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-20T17:11:42.210359"
+  "fetched_at": "2026-10-27T17:56:43.292928"
 }

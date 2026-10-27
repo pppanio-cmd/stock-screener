@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "HD",
-    "fetch_date": "2026-10-20T16:42:53.856966",
+    "fetch_date": "2026-10-27T17:27:55.777151",
     "quarterly_revenue": {
       "2025-07-31 00:00:00": 45277000000.0,
       "2025-10-31 00:00:00": 41352000000.0,
@@ -36,5 +36,5 @@
     "inventory_to_sales_ratio": 0.561,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-20T16:42:53.857981"
+  "fetched_at": "2026-10-27T17:27:55.778417"
 }

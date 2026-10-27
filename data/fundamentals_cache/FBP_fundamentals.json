@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "FBP",
-    "fetch_date": "2026-10-15T17:07:22.586074",
+    "fetch_date": "2026-10-27T17:22:38.050718",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 239734000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": 24.0,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-15T17:07:22.586607"
+  "fetched_at": "2026-10-27T17:22:38.051280"
 }

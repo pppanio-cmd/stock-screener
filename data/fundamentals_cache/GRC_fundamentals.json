@@ -1,28 +1,30 @@
 {
   "data": {
     "ticker": "GRC",
-    "fetch_date": "2026-10-15T17:11:32.835014",
+    "fetch_date": "2026-10-27T17:26:47.744262",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 179045000.0,
       "2025-09-30 00:00:00": 172825000.0,
       "2025-12-31 00:00:00": 166571000.0,
       "2026-03-31 00:00:00": 176593000.0,
-      "2026-06-30 00:00:00": 186065000.0
+      "2026-06-30 00:00:00": 186065000.0,
+      "2026-09-30 00:00:00": NaN
     },
-    "revenue_qoq_change": 5.363746014847701,
-    "revenue_yoy_change": 3.9208020330084614,
+    "revenue_qoq_change": null,
+    "revenue_yoy_change": null,
     "quarterly_eps": {
-      "2025-06-30 00:00:00": 0.6,
+      "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 0.43,
       "2025-12-31 00:00:00": 0.52,
       "2026-03-31 00:00:00": 0.68,
-      "2026-06-30 00:00:00": 0.74
+      "2026-06-30 00:00:00": 0.74,
+      "2026-09-30 00:00:00": 0.86
     },
-    "eps_qoq_change": 8.823529411764696,
-    "eps_yoy_change": 23.333333333333336,
-    "gross_margin": 32.57,
-    "margin_change": 0.09,
-    "operating_margin": 16.34,
+    "eps_qoq_change": 16.216216216216218,
+    "eps_yoy_change": 100.0,
+    "gross_margin": NaN,
+    "margin_change": NaN,
+    "operating_margin": NaN,
     "quarterly_inventory": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 97345000.0,
@@ -32,8 +34,8 @@
       "2026-06-30 00:00:00": 87130000.0
     },
     "inventory_qoq_change": -9.16,
-    "inventory_to_sales_ratio": 0.468,
+    "inventory_to_sales_ratio": NaN,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-15T17:11:32.836271"
+  "fetched_at": "2026-10-27T17:26:47.745545"
 }
