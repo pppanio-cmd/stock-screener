@@ -9,12 +9,14 @@ def scan_rockets():
     q = EquityQuery('and', [
         EquityQuery('lt', ['intradayprice', 20]),
         EquityQuery('gt', ['dayvolume', 1000000]),
-        EquityQuery('gt', ['regularMarketChangePercent', 10.0]), 
+        # ✅ ИСПРАВЛЕНО: правильное имя поля - percentchange
+        EquityQuery('gt', ['percentchange', 10.0]), 
         EquityQuery('is-in', ['exchange', 'NMS', 'NYQ', 'ASE'])
     ])
     
     try:
-        r = yf.screen(q, size=10, sortField='regularMarketChangePercent', sortAsc=False)
+        # ✅ ИСПРАВЛЕНО: правильное имя поля для сортировки - percentchange
+        r = yf.screen(q, size=10, sortField='percentchange', sortAsc=False)
     except Exception as e:
         print(f"Ошибка сканера: {e}")
         return
@@ -27,7 +29,7 @@ def scan_rockets():
     for i, quote in enumerate(r['quotes'], 1):
         ticker = quote.get('symbol')
         price = quote.get('regularMarketPrice')
-        change = quote.get('regularMarketChangePercent')
+        change = quote.get('regularMarketChangePercent') # это поле в ответе может остаться, оно информативное
         
         if not price or not ticker: continue
         
@@ -39,7 +41,9 @@ def scan_rockets():
         output += f"Stop Loss: ${stop}\n"
         output += f"Breakout: ${price}\n"
         output += f"Risk/Reward: 2.8:1\n" 
-        output += f"(Текущий рост: {change:.1f}%)\n\n"
+        # В ответе поле может называться regularMarketChangePercent, это нормально
+        change_str = f"{change:.1f}%" if change is not None else "N/A"
+        output += f"(Текущий рост: {change_str})\n\n"
 
     with open("data/daily_scans/latest_rocket_scan.txt", "w", encoding="utf-8") as f:
         f.write(output)
