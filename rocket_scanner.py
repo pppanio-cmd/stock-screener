@@ -25,6 +25,40 @@ def get_current_price(ticker):
     except Exception: pass
     return None
 
+def check_intraday_trigger(ticker, stop_loss, target_price):
+    """
+    Проверяет, касалась ли цена стопа или тейка за последние 24 часа 
+    используя 15-минутные или часовые свечи.
+    Возвращает: ('WIN' или 'LOSS' или None, actual_price)
+    """
+    try:
+        stock = yf.Ticker(ticker)
+        
+        # Пробуем сначала 15-минутные (точнее), потом часовые
+        hist = stock.history(period="1d", interval="15m")
+        if hist.empty:
+            hist = stock.history(period="5d", interval="1h")
+        if hist.empty:
+            return None, None
+        
+        for timestamp, row in hist.iterrows():
+            high = row['High']
+            low = row['Low']
+            
+            hit_stop = low <= stop_loss
+            hit_target = high >= target_price
+            
+            # Если оба сработали в одной свече - консервативно считаем стоп
+            if hit_stop:
+                return 'LOSS', stop_loss
+            elif hit_target:
+                return 'WIN', target_price
+        
+        return None, None
+    except Exception as e:
+        print(f"Ошибка проверки {ticker}: {e}")
+        return None, None
+
 def parse_signals(txt_path):
     buys = {}
     if not txt_path or not os.path.exists(txt_path): return buys
@@ -55,7 +89,6 @@ def calculate_balance(df, events):
     report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
     
     if df is not None and not df.empty:
-        # 1. Открытые позиции
         open_positions = df[df['Status'] == 'OPEN']
         if not open_positions.empty:
             report += "📈 РАКЕТЫ В ПОРТФЕЛЕ:\n"
@@ -65,10 +98,9 @@ def calculate_balance(df, events):
                 report += f"   🛑 Стоп: ${row['Stop_Loss']} | 🎯 Тейк: ${row['Target_Price']}\n"
             report += "\n"
 
-        # 2. ИСТОРИЯ ЗАКРЫТЫХ СДЕЛОК (Последние 5)
         closed_positions = df[df['Status'].isin(['WIN', 'LOSS'])].tail(5)
         if not closed_positions.empty:
-            report += "📜 ИСТОРИЯ СДЕЛОК (последние 5):\n"
+            report += "📜 ИСТОРИЯ (последние 5):\n"
             for _, row in closed_positions.iterrows():
                 emoji = "💰" if row['Status'] == 'WIN' else "💥"
                 pnl_usd = row['PnL_$'] if pd.notna(row['PnL_$']) else 0.0
@@ -76,10 +108,10 @@ def calculate_balance(df, events):
             report += "\n"
 
     if events:
-        report += "📋 ДЕЙСТВИЯ ЗА ЭТОТ ЗАПУСК:\n"
+        report += "📋 ДЕЙСТВИЯ:\n"
         for ev in events[-5:]: report += f"{ev}\n"
     else:
-        report += "📋 В этот запуск новых сделок не было.\n"
+        report += "📋 Новых сделок не было.\n"
 
     with open("rocket_summary.txt", "w", encoding="utf-8") as f:
         f.write(report)
@@ -109,6 +141,7 @@ def update_journal():
         active_mask = df['Status'].isin(['PENDING', 'OPEN'])
         for index, row in df[active_mask].iterrows():
             ticker, entry_price, target_price = row['Ticker'], row['Entry_Price'], row['Target_Price']
+            stop_loss = row['Stop_Loss']
             current_price = get_current_price(ticker)
             if current_price is None: continue
 
@@ -118,7 +151,6 @@ def update_journal():
             if row['Status'] == 'PENDING':
                 if entry_price <= current_price <= (entry_price * 1.15):
                     max_trade_value = current_equity * ALLOCATION_PERCENT
-                    
                     alloc_shares = int(max_trade_value // current_price)
                     cash_shares = int(current_cash // current_price)
                     shares_to_buy = min(alloc_shares, cash_shares)
@@ -134,17 +166,28 @@ def update_journal():
                         events.append(f"🚀 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (на ${cost})")
 
             elif row['Status'] == 'OPEN':
+                # 🔥 СНАЧАЛА: Проверяем, не задело ли стоп/тейк внутри дня
+                trigger, actual_price = check_intraday_trigger(ticker, stop_loss, target_price)
+                
+                if trigger == 'WIN':
+                    df.at[index, 'Status'] = 'WIN'
+                    df.at[index, 'Close_Price'] = actual_price
+                    df.at[index, 'PnL_$'] = round((row['Shares'] * actual_price) - row['Invested'], 2)
+                    df.at[index, 'PnL_%'] = round(((actual_price - entry_price) / entry_price) * 100, 2)
+                    events.append(f"🌙 ВЗЛЕТ (внутри дня): {ticker} по ${actual_price} (Профит: +${df.at[index, 'PnL_$']:.2f})")
+                    continue
+                
+                if trigger == 'LOSS':
+                    df.at[index, 'Status'] = 'LOSS'
+                    df.at[index, 'Close_Price'] = actual_price
+                    df.at[index, 'PnL_$'] = round((row['Shares'] * actual_price) - row['Invested'], 2)
+                    df.at[index, 'PnL_%'] = round(((actual_price - entry_price) / entry_price) * 100, 2)
+                    events.append(f"💥 РАКЕТА УПАЛА (внутри дня): {ticker} по ${actual_price} (Убыток: ${df.at[index, 'PnL_$']:.2f})")
+                    continue
+
+                # Если ничего не задело — просто обновляем статистику
                 df.at[index, 'PnL_%'] = round(pnl_pct, 2)
                 df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
-                
-                if current_price <= row['Stop_Loss']:
-                    df.at[index, 'Status'] = 'LOSS'
-                    df.at[index, 'Close_Price'] = current_price
-                    events.append(f"💥 РАКЕТА УПАЛА: {ticker} по ${current_price} (Убыток: ${df.at[index, 'PnL_$']:.2f})")
-                elif current_price >= target_price:
-                    df.at[index, 'Status'] = 'WIN'
-                    df.at[index, 'Close_Price'] = current_price
-                    events.append(f"🌙 ВЗЛЕТ: {ticker} по ${current_price} (Профит: +${df.at[index, 'PnL_$']:.2f})")
 
         df.to_excel(EXCEL_FILE, index=False)
     except Exception as e:
