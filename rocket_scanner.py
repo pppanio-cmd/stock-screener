@@ -55,20 +55,31 @@ def calculate_balance(df, events):
     report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
     
     if df is not None and not df.empty:
+        # 1. Открытые позиции
         open_positions = df[df['Status'] == 'OPEN']
         if not open_positions.empty:
             report += "📈 РАКЕТЫ В ПОРТФЕЛЕ:\n"
             for _, row in open_positions.iterrows():
-                pnl = row['PnL_%'] if pd.notna(row['PnL_%']) else 0.0 # Защита от None
+                pnl = row['PnL_%'] if pd.notna(row['PnL_%']) else 0.0
                 report += f"🔹 {row['Ticker']}: {int(row['Shares'])} шт. (Вход: ${row['Entry_Price']} -> Сейчас: ${row['Current_Price']}, PnL: {pnl}%)\n"
                 report += f"   🛑 Стоп: ${row['Stop_Loss']} | 🎯 Тейк: ${row['Target_Price']}\n"
             report += "\n"
 
+        # 2. ИСТОРИЯ ЗАКРЫТЫХ СДЕЛОК (Последние 5)
+        closed_positions = df[df['Status'].isin(['WIN', 'LOSS'])].tail(5)
+        if not closed_positions.empty:
+            report += "📜 ИСТОРИЯ СДЕЛОК (последние 5):\n"
+            for _, row in closed_positions.iterrows():
+                emoji = "💰" if row['Status'] == 'WIN' else "💥"
+                pnl_usd = row['PnL_$'] if pd.notna(row['PnL_$']) else 0.0
+                report += f"{emoji} {row['Ticker']}: закрыт по ${row['Close_Price']} (PnL: ${pnl_usd:.2f})\n"
+            report += "\n"
+
     if events:
-        report += "📋 ДЕЙСТВИЯ ЗА СЕГОДНЯ:\n"
-        for ev in events[-10:]: report += f"{ev}\n"
+        report += "📋 ДЕЙСТВИЯ ЗА ЭТОТ ЗАПУСК:\n"
+        for ev in events[-5:]: report += f"{ev}\n"
     else:
-        report += "📋 Сегодня ракет не найдено.\n"
+        report += "📋 В этот запуск новых сделок не было.\n"
 
     with open("rocket_summary.txt", "w", encoding="utf-8") as f:
         f.write(report)
@@ -93,7 +104,6 @@ def update_journal():
                     'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 'Close_Price': None, 'PnL_%': 0.0, 'PnL_$': 0.0
                 }])], ignore_index=True)
 
-        # 🔥 ИСПРАВЛЕНИЕ 2: Считаем кэш один раз и обновляем его в процессе
         current_equity, current_cash = get_current_balance(df)
 
         active_mask = df['Status'].isin(['PENDING', 'OPEN'])
@@ -118,9 +128,9 @@ def update_journal():
                         df.at[index, 'Status'] = 'OPEN'
                         df.at[index, 'Shares'] = shares_to_buy
                         df.at[index, 'Invested'] = cost
-                        df.at[index, 'PnL_%'] = 0.0 # 🔥 ИСПРАВЛЕНИЕ 1: Сразу ставим 0.0 вместо None
+                        df.at[index, 'PnL_%'] = 0.0
                         df.at[index, 'PnL_$'] = 0.0
-                        current_cash -= cost # Вычитаем из кэша, чтобы не купить на все деньги сразу
+                        current_cash -= cost 
                         events.append(f"🚀 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (на ${cost})")
 
             elif row['Status'] == 'OPEN':
