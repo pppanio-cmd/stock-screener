@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "LB",
-    "fetch_date": "2026-10-22T17:05:01.339705",
+    "fetch_date": "2026-10-29T18:19:06.043576",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 47533000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 66.07,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-22T17:05:01.341209"
+  "fetched_at": "2026-10-29T18:19:06.045071"
 }
