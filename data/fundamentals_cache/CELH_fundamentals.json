@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "CELH",
-    "fetch_date": "2026-10-19T18:27:47.721888",
+    "fetch_date": "2026-10-30T17:38:43.280339",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 739259000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.478,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-19T18:27:47.723541"
+  "fetched_at": "2026-10-30T17:38:43.282406"
 }
