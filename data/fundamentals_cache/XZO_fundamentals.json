@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "XZO",
-    "fetch_date": "2026-10-27T18:03:54.702288",
+    "fetch_date": "2026-11-03T19:51:16.835189",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 56091000.0,
       "2025-09-30 00:00:00": 55166000.0,
@@ -25,5 +25,5 @@
     "operating_margin": 49.26,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T18:03:54.703252"
+  "fetched_at": "2026-11-03T19:51:16.836185"
 }

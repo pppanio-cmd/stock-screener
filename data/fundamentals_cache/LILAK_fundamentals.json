@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "LILAK",
-    "fetch_date": "2026-10-27T17:34:56.791764",
+    "fetch_date": "2026-11-03T19:22:16.618984",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 1086700000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 17.46,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:34:56.792743"
+  "fetched_at": "2026-11-03T19:22:16.619988"
 }

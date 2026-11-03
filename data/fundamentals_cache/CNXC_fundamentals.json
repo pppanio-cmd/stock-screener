@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "CNXC",
-    "fetch_date": "2026-10-27T17:15:21.706493",
+    "fetch_date": "2026-11-03T19:02:31.379304",
     "quarterly_revenue": {
       "2025-02-28 00:00:00": NaN,
       "2025-05-31 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": 5.69,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:15:21.707471"
+  "fetched_at": "2026-11-03T19:02:31.380313"
 }

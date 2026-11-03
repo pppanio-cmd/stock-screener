@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "GH",
-    "fetch_date": "2026-10-27T17:25:46.660926",
+    "fetch_date": "2026-11-03T19:13:09.463034",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 232088000.0,
       "2025-09-30 00:00:00": 265196000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 0.315,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:25:46.662168"
+  "fetched_at": "2026-11-03T19:13:09.464291"
 }

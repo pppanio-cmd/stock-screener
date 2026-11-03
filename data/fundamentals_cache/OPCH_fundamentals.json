@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "OPCH",
-    "fetch_date": "2026-10-27T17:43:32.139630",
+    "fetch_date": "2026-11-03T19:30:55.500615",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 1416085000.0,
       "2025-09-30 00:00:00": 1435016000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 0.277,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:43:32.141866"
+  "fetched_at": "2026-11-03T19:30:55.502057"
 }

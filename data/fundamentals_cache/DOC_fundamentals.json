@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "DOC",
-    "fetch_date": "2026-10-27T17:18:55.807964",
+    "fetch_date": "2026-11-03T19:06:07.122311",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 694348000.0,
       "2025-09-30 00:00:00": 705873000.0,
@@ -25,5 +25,5 @@
     "operating_margin": 17.18,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:18:55.808986"
+  "fetched_at": "2026-11-03T19:06:07.124199"
 }

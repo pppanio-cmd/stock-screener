@@ -1,18 +1,18 @@
 {
   "data": {
     "ticker": "CME",
-    "fetch_date": "2026-10-27T17:14:48.702638",
+    "fetch_date": "2026-11-03T19:01:58.513012",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
-      "2025-06-30 00:00:00": 1692000000.0,
+      "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 1537600000.0,
       "2025-12-31 00:00:00": 1648700000.0,
       "2026-03-31 00:00:00": 1880100000.0,
       "2026-06-30 00:00:00": 1706200000.0,
-      "2026-09-30 00:00:00": NaN
+      "2026-09-30 00:00:00": 1737300000.0
     },
-    "revenue_qoq_change": null,
-    "revenue_yoy_change": null,
+    "revenue_qoq_change": 1.8227640370413787,
+    "revenue_yoy_change": 12.987773152965662,
     "quarterly_eps": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -24,10 +24,10 @@
     },
     "eps_qoq_change": 0.34722222222223026,
     "eps_yoy_change": 16.064257028112443,
-    "gross_margin": NaN,
-    "margin_change": NaN,
-    "operating_margin": NaN,
+    "gross_margin": 86.51,
+    "margin_change": 0.2,
+    "operating_margin": 65.7,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:14:48.703630"
+  "fetched_at": "2026-11-03T19:01:58.514007"
 }

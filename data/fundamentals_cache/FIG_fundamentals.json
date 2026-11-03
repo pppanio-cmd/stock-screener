@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "FIG",
-    "fetch_date": "2026-10-27T17:23:17.698102",
+    "fetch_date": "2026-11-03T19:10:40.511741",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 249640000.0,
@@ -27,5 +27,5 @@
     "operating_margin": -31.69,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:23:17.699088"
+  "fetched_at": "2026-11-03T19:10:40.512744"
 }

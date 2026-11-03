@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MEDP",
-    "fetch_date": "2026-10-27T17:37:16.827186",
+    "fetch_date": "2026-11-03T19:24:35.672102",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": 23.12,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:37:16.828177"
+  "fetched_at": "2026-11-03T19:24:35.673110"
 }

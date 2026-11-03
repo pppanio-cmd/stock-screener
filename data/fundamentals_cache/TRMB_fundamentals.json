@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "TRMB",
-    "fetch_date": "2026-10-27T17:57:58.154175",
+    "fetch_date": "2026-11-03T19:45:20.904564",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 875700000.0,
       "2025-09-30 00:00:00": 901200000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 0.191,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:57:58.155472"
+  "fetched_at": "2026-11-03T19:45:20.905826"
 }

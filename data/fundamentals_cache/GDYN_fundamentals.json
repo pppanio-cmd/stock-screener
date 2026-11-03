@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "GDYN",
-    "fetch_date": "2026-10-27T17:25:26.675697",
+    "fetch_date": "2026-11-03T19:12:49.382247",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 101095000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 1.18,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:25:26.676725"
+  "fetched_at": "2026-11-03T19:12:49.383636"
 }

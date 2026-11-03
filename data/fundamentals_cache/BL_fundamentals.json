@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "BL",
-    "fetch_date": "2026-10-27T17:09:53.544442",
+    "fetch_date": "2026-11-03T18:57:02.990082",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 172025000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 6.45,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:09:53.545463"
+  "fetched_at": "2026-11-03T18:57:02.991098"
 }

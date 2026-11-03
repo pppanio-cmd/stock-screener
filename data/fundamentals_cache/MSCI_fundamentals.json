@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MSCI",
-    "fetch_date": "2026-10-27T17:38:56.774443",
+    "fetch_date": "2026-11-03T19:26:15.015425",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 793400000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 56.29,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-27T17:38:56.775421"
+  "fetched_at": "2026-11-03T19:26:15.016415"
 }
