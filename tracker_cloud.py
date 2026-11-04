@@ -6,16 +6,15 @@ import glob
 import time
 from datetime import datetime
 
-EXCEL_FILE = "trading_journal_v4.xlsx"  # Ваш файл журнала
-INITIAL_BALANCE = 200.0                 # Стартовый депозит
-ALLOCATION_PERCENT = 0.5                # 50% на сделку
+EXCEL_FILE = "trading_journal_v5.xlsx"  # Продолжаем v5
+INITIAL_BALANCE = 200.0
+ALLOCATION_PERCENT = 0.5
 
 def get_latest_scan_file():
     files = glob.glob("data/daily_scans/latest_optimized_scan.txt")
     if not files:
         return None
     file_path = files[0]
-    # Защита: игнорируем файлы старше 2 дней
     if time.time() - os.path.getmtime(file_path) > 2 * 24 * 3600:
         print("⚠️ Файл сканера устарел. Игнорируем.")
         return None
@@ -36,9 +35,11 @@ def parse_signals(txt_path):
     
     blocks = re.finditer(r"⭐ BUY #\d+: (\w+).*?Stop Loss: \$([\d.]+).*?Breakout: \$([\d.]+).*?Risk/Reward: ([\d.]+):1", content, re.DOTALL)
     for block in blocks:
-        ticker, stop_loss, entry_price, rr_ratio = block.group(1), float(block.group(2)), float(block.group(3)), float(block.group(4))
-        target_price = entry_price + ((entry_price - stop_loss) * rr_ratio)
-        buys[ticker] = {'entry': entry_price, 'stop': stop_loss, 'target': round(target_price, 2)}
+        ticker = block.group(1)
+        entry_price = float(block.group(3))
+        
+        # ВРЕМЕННО СТАВИМ ЗАГЛУШКИ, ПЕРЕСЧЕТ БУДЕТ ПРИ ПОКУПКЕ
+        buys[ticker] = {'entry': entry_price, 'stop': 0.0, 'target': 0.0}
     return buys, sells
 
 def get_current_balance(df):
@@ -55,11 +56,9 @@ def calculate_balance(df, events):
     open_value = total_equity - cash
     total_profit = total_equity - INITIAL_BALANCE
     
-    # Формируем красивый отчет
     report = f"💰 Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}\n"
     report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
     
-    # БЛОК: Что сейчас в портфеле (с добавленным Стопом и Тейком)
     if df is not None and not df.empty:
         open_positions = df[df['Status'] == 'OPEN']
         if not open_positions.empty:
@@ -71,11 +70,10 @@ def calculate_balance(df, events):
             report += "\n"
 
     if events:
-        report += "📋 ДЕЙСТВИЯ БОТА ЗА СЕГОДНЯ:\n"
-        for ev in events[-10:]: # Показываем 10 последних событий
-            report += f"{ev}\n"
+        report += "📋 ДЕЙСТВИЯ ЗА СЕГОДНЯ:\n"
+        for ev in events[-10:]: report += f"{ev}\n"
     else:
-        report += "📋 Сегодня новых сделок не было (все сигналы устарели или не было сигналов).\n"
+        report += "📋 Сегодня новых сделок не было.\n"
 
     with open("summary.txt", "w", encoding="utf-8") as f:
         f.write(report)
@@ -93,33 +91,25 @@ def update_journal():
         latest_txt = get_latest_scan_file()
         new_buys, _ = parse_signals(latest_txt)
 
-        if not new_buys and latest_txt:
-            events.append("⏭ Нет новых сигналов от сканера.")
-
-        # Добавляем новые сигналы в таблицу
         for ticker, data in new_buys.items():
             if ticker not in df['Ticker'].values:
                 df = pd.concat([df, pd.DataFrame([{
                     'Ticker': ticker, 'Date_Added': datetime.now().strftime("%Y-%m-%d"),
-                    'Entry_Price': data['entry'], 'Stop_Loss': data['stop'], 'Target_Price': data['target'],
-                    'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 'Close_Price': None, 'PnL_%': None, 'PnL_$': 0.0
+                    'Entry_Price': data['entry'], 'Stop_Loss': 0.0, 'Target_Price': 0.0,
+                    'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 'Close_Price': None, 'PnL_%': 0.0, 'PnL_$': 0.0
                 }])], ignore_index=True)
 
-        # Обрабатываем активные сделки (PENDING и OPEN)
         active_mask = df['Status'].isin(['PENDING', 'OPEN'])
         for index, row in df[active_mask].iterrows():
             ticker, entry_price = row['Ticker'], row['Entry_Price']
-            stop_loss, target_price = row['Stop_Loss'], row['Target_Price']
             current_price = get_current_price(ticker)
             
-            if current_price is None: 
-                continue
+            if current_price is None: continue
 
             df.at[index, 'Current_Price'] = current_price
             pnl_pct = ((current_price - entry_price) / entry_price) * 100
 
             if row['Status'] == 'PENDING':
-                # Защита: Покупаем, только если цена в диапазоне от сигнала до +5%
                 if entry_price <= current_price <= (entry_price * 1.05):
                     current_equity, current_cash = get_current_balance(df)
                     max_trade_value = current_equity * ALLOCATION_PERCENT
@@ -129,25 +119,30 @@ def update_journal():
                     shares_to_buy = min(alloc_shares, cash_shares)
                     
                     if shares_to_buy > 0:
+                        cost = round(shares_to_buy * current_price, 2)
                         df.at[index, 'Status'] = 'OPEN'
                         df.at[index, 'Shares'] = shares_to_buy
-                        df.at[index, 'Invested'] = round(shares_to_buy * current_price, 2)
-                        events.append(f"🟢 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (на ${shares_to_buy * current_price:.2f})")
-                    else:
-                        events.append(f"⏭ ПРОПУЩЕНО: {ticker} - не хватает кэша")
-                else:
-                    events.append(f"⏭ ПРОПУЩЕНО: {ticker} - цена улетела (Сигнал: ${entry_price}, Сейчас: ${current_price})")
+                        df.at[index, 'Invested'] = cost
+                        
+                        # 🔥 ВНЕДРЯЕМ ПРАВИЛО 5% / 10% ОТ РЕАЛЬНОЙ ЦЕНЫ ПОКУПКИ
+                        df.at[index, 'Entry_Price'] = current_price
+                        df.at[index, 'Stop_Loss'] = round(current_price * 0.95, 2)
+                        df.at[index, 'Target_Price'] = round(current_price * 1.10, 2)
+                        df.at[index, 'PnL_%'] = 0.0
+                        df.at[index, 'PnL_$'] = 0.0
+                        current_cash -= cost
+                        
+                        events.append(f"🟢 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (Стоп: ${df.at[index, 'Stop_Loss']}, Тейк: ${df.at[index, 'Target_Price']})")
 
             elif row['Status'] == 'OPEN':
                 df.at[index, 'PnL_%'] = round(pnl_pct, 2)
                 df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
                 
-                # Проверка выхода по стопу или тейку
-                if current_price <= stop_loss:
+                if current_price <= row['Stop_Loss']:
                     df.at[index, 'Status'] = 'LOSS'
                     df.at[index, 'Close_Price'] = current_price
-                    events.append(f"🔴 ЗАКРЫТО В МИНУС: {ticker} по ${current_price} (Убыток: ${df.at[index, 'PnL_$']:.2f})")
-                elif current_price >= target_price:
+                    events.append(f"🔴 ЗАКРЫТО В МИНУС: {ticker} по ${current_price}")
+                elif current_price >= row['Target_Price']:
                     df.at[index, 'Status'] = 'WIN'
                     df.at[index, 'Close_Price'] = current_price
                     events.append(f"💰 ЗАКРЫТО В ПЛЮС: {ticker} по ${current_price} (Профит: +${df.at[index, 'PnL_$']:.2f})")
@@ -156,7 +151,6 @@ def update_journal():
         
     except Exception as e:
         events.append(f"❌ ОШИБКА: {str(e)[:100]}")
-        print(f"Ошибка: {e}")
     finally:
         calculate_balance(df, events)
 
