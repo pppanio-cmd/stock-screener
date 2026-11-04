@@ -1,199 +1,58 @@
-import pandas as pd
 import yfinance as yf
+from yfinance import EquityQuery
+import pandas as pd
 import os
-import re
-import time
 from datetime import datetime
 
-EXCEL_FILE = "rocket_journal.xlsx"  
-INITIAL_BALANCE = 100.0  
-ALLOCATION_PERCENT = 0.5 
-
-def get_latest_scan_file():
-    files = ["data/daily_scans/latest_rocket_scan.txt"]
-    if not os.path.exists(files[0]): return None
-    file_path = files[0]
-    if time.time() - os.path.getmtime(file_path) > 1 * 24 * 3600:
-        return None
-    return file_path
-
-def get_current_price(ticker):
-    try:
-        stock = yf.Ticker(ticker)
-        hist = stock.history(period="1d")
-        if not hist.empty: return round(hist['Close'].iloc[-1], 2)
-    except Exception: pass
-    return None
-
-def check_intraday_trigger(ticker, stop_loss, target_price):
-    """
-    Проверяет, касалась ли цена стопа или тейка за последние 24 часа 
-    используя 15-минутные или часовые свечи.
-    Возвращает: ('WIN' или 'LOSS' или None, actual_price)
-    """
-    try:
-        stock = yf.Ticker(ticker)
-        
-        # Пробуем сначала 15-минутные (точнее), потом часовые
-        hist = stock.history(period="1d", interval="15m")
-        if hist.empty:
-            hist = stock.history(period="5d", interval="1h")
-        if hist.empty:
-            return None, None
-        
-        for timestamp, row in hist.iterrows():
-            high = row['High']
-            low = row['Low']
-            
-            hit_stop = low <= stop_loss
-            hit_target = high >= target_price
-            
-            # Если оба сработали в одной свече - консервативно считаем стоп
-            if hit_stop:
-                return 'LOSS', stop_loss
-            elif hit_target:
-                return 'WIN', target_price
-        
-        return None, None
-    except Exception as e:
-        print(f"Ошибка проверки {ticker}: {e}")
-        return None, None
-
-def parse_signals(txt_path):
-    buys = {}
-    if not txt_path or not os.path.exists(txt_path): return buys
-    with open(txt_path, 'r', encoding='utf-8') as file: content = file.read()
-    blocks = re.finditer(r"⭐ BUY #\d+: (\w+).*?Stop Loss: \$([\d.]+).*?Breakout: \$([\d.]+).*?Risk/Reward: ([\d.]+):1", content, re.DOTALL)
-    for block in blocks:
-        ticker, stop_loss, entry_price, rr_ratio = block.group(1), float(block.group(2)), float(block.group(3)), float(block.group(4))
-        target_price = entry_price + ((entry_price - stop_loss) * rr_ratio)
-        buys[ticker] = {'entry': entry_price, 'stop': stop_loss, 'target': round(target_price, 2)}
-    return buys
-
-def get_current_balance(df):
-    if df is None or df.empty: return INITIAL_BALANCE, INITIAL_BALANCE
-    cash = INITIAL_BALANCE
-    for _, row in df.iterrows():
-        if row['Status'] in ['OPEN', 'WIN', 'LOSS']: cash -= row['Invested']
-        if row['Status'] in ['WIN', 'LOSS']: cash += (row['Invested'] + row['PnL_$'])
-    open_value = sum(row['Shares'] * row['Current_Price'] for _, row in df[df['Status'] == 'OPEN'].iterrows() if pd.notna(row['Current_Price']))
-    return cash + open_value, cash
-
-def calculate_balance(df, events):
-    total_equity, cash = get_current_balance(df)
-    open_value = total_equity - cash
-    total_profit = total_equity - INITIAL_BALANCE
+def scan_rockets():
+    print("🚀 Сканируем рынок на наличие 'ракет'...")
+    # Ищем акции: цена до $20, объем от 1 млн, сегодняшний рост > 10%
+    q = EquityQuery('and', [
+        EquityQuery('lt', ['intradayprice', 20]),
+        EquityQuery('gt', ['dayvolume', 1000000]),
+        EquityQuery('gt', ['percentchange', 10.0]), 
+        EquityQuery('is-in', ['exchange', 'NMS', 'NYQ', 'ASE'])
+    ])
     
-    report = f"🚀 РАКЕТНЫЙ ПОРТФЕЛЬ 🚀\n"
-    report += f"💰 Баланс: ${total_equity:.2f} | Профит: ${total_profit:.2f}\n"
-    report += f"💵 Кэш: ${cash:.2f} | Активы: ${open_value:.2f}\n\n"
-    
-    if df is not None and not df.empty:
-        open_positions = df[df['Status'] == 'OPEN']
-        if not open_positions.empty:
-            report += "📈 РАКЕТЫ В ПОРТФЕЛЕ:\n"
-            for _, row in open_positions.iterrows():
-                pnl = row['PnL_%'] if pd.notna(row['PnL_%']) else 0.0
-                report += f"🔹 {row['Ticker']}: {int(row['Shares'])} шт. (Вход: ${row['Entry_Price']} -> Сейчас: ${row['Current_Price']}, PnL: {pnl}%)\n"
-                report += f"   🛑 Стоп: ${row['Stop_Loss']} | 🎯 Тейк: ${row['Target_Price']}\n"
-            report += "\n"
-
-        closed_positions = df[df['Status'].isin(['WIN', 'LOSS'])].tail(5)
-        if not closed_positions.empty:
-            report += "📜 ИСТОРИЯ (последние 5):\n"
-            for _, row in closed_positions.iterrows():
-                emoji = "💰" if row['Status'] == 'WIN' else "💥"
-                pnl_usd = row['PnL_$'] if pd.notna(row['PnL_$']) else 0.0
-                report += f"{emoji} {row['Ticker']}: закрыт по ${row['Close_Price']} (PnL: ${pnl_usd:.2f})\n"
-            report += "\n"
-
-    if events:
-        report += "📋 ДЕЙСТВИЯ:\n"
-        for ev in events[-5:]: report += f"{ev}\n"
-    else:
-        report += "📋 Новых сделок не было.\n"
-
-    with open("rocket_summary.txt", "w", encoding="utf-8") as f:
-        f.write(report)
-
-def update_journal():
-    df = pd.DataFrame(columns=['Ticker', 'Date_Added', 'Entry_Price', 'Stop_Loss', 'Target_Price', 'Status', 'Shares', 'Invested', 'Current_Price', 'Close_Price', 'PnL_%', 'PnL_$'])
-    events = []
     try:
-        if os.path.exists(EXCEL_FILE): df = pd.read_excel(EXCEL_FILE)
-        for col in ['Shares', 'Invested', 'PnL_$', 'Stop_Loss', 'Target_Price']:
-            if col not in df.columns: df[col] = 0.0
-        df.fillna({'Shares': 0, 'Invested': 0.0, 'PnL_$': 0.0, 'Stop_Loss': 0.0, 'Target_Price': 0.0}, inplace=True)
-
-        latest_txt = get_latest_scan_file()
-        new_buys = parse_signals(latest_txt)
-
-        for ticker, data in new_buys.items():
-            if ticker not in df['Ticker'].values:
-                df = pd.concat([df, pd.DataFrame([{
-                    'Ticker': ticker, 'Date_Added': datetime.now().strftime("%Y-%m-%d"),
-                    'Entry_Price': data['entry'], 'Stop_Loss': data['stop'], 'Target_Price': data['target'],
-                    'Status': 'PENDING', 'Shares': 0, 'Invested': 0.0, 'Current_Price': None, 'Close_Price': None, 'PnL_%': 0.0, 'PnL_$': 0.0
-                }])], ignore_index=True)
-
-        current_equity, current_cash = get_current_balance(df)
-
-        active_mask = df['Status'].isin(['PENDING', 'OPEN'])
-        for index, row in df[active_mask].iterrows():
-            ticker, entry_price, target_price = row['Ticker'], row['Entry_Price'], row['Target_Price']
-            stop_loss = row['Stop_Loss']
-            current_price = get_current_price(ticker)
-            if current_price is None: continue
-
-            df.at[index, 'Current_Price'] = current_price
-            pnl_pct = ((current_price - entry_price) / entry_price) * 100
-
-            if row['Status'] == 'PENDING':
-                if entry_price <= current_price <= (entry_price * 1.15):
-                    max_trade_value = current_equity * ALLOCATION_PERCENT
-                    alloc_shares = int(max_trade_value // current_price)
-                    cash_shares = int(current_cash // current_price)
-                    shares_to_buy = min(alloc_shares, cash_shares)
-                    
-                    if shares_to_buy > 0:
-                        cost = round(shares_to_buy * current_price, 2)
-                        df.at[index, 'Status'] = 'OPEN'
-                        df.at[index, 'Shares'] = shares_to_buy
-                        df.at[index, 'Invested'] = cost
-                        df.at[index, 'PnL_%'] = 0.0
-                        df.at[index, 'PnL_$'] = 0.0
-                        current_cash -= cost 
-                        events.append(f"🚀 КУПЛЕНО: {ticker} x{shares_to_buy} шт. по ${current_price} (на ${cost})")
-
-            elif row['Status'] == 'OPEN':
-                # 🔥 СНАЧАЛА: Проверяем, не задело ли стоп/тейк внутри дня
-                trigger, actual_price = check_intraday_trigger(ticker, stop_loss, target_price)
-                
-                if trigger == 'WIN':
-                    df.at[index, 'Status'] = 'WIN'
-                    df.at[index, 'Close_Price'] = actual_price
-                    df.at[index, 'PnL_$'] = round((row['Shares'] * actual_price) - row['Invested'], 2)
-                    df.at[index, 'PnL_%'] = round(((actual_price - entry_price) / entry_price) * 100, 2)
-                    events.append(f"🌙 ВЗЛЕТ (внутри дня): {ticker} по ${actual_price} (Профит: +${df.at[index, 'PnL_$']:.2f})")
-                    continue
-                
-                if trigger == 'LOSS':
-                    df.at[index, 'Status'] = 'LOSS'
-                    df.at[index, 'Close_Price'] = actual_price
-                    df.at[index, 'PnL_$'] = round((row['Shares'] * actual_price) - row['Invested'], 2)
-                    df.at[index, 'PnL_%'] = round(((actual_price - entry_price) / entry_price) * 100, 2)
-                    events.append(f"💥 РАКЕТА УПАЛА (внутри дня): {ticker} по ${actual_price} (Убыток: ${df.at[index, 'PnL_$']:.2f})")
-                    continue
-
-                # Если ничего не задело — просто обновляем статистику
-                df.at[index, 'PnL_%'] = round(pnl_pct, 2)
-                df.at[index, 'PnL_$'] = round((row['Shares'] * current_price) - row['Invested'], 2)
-
-        df.to_excel(EXCEL_FILE, index=False)
+        r = yf.screen(q, size=10, sortField='percentchange', sortAsc=False)
     except Exception as e:
-        events.append(f"❌ ОШИБКА: {str(e)[:100]}")
-    finally:
-        calculate_balance(df, events)
+        print(f"Ошибка сканера: {e}")
+        return
+
+    if not r or 'quotes' not in r:
+        print("Ракет сегодня нет.")
+        return
+
+    # Создаем папку, если ее нет
+    os.makedirs("data/daily_scans", exist_ok=True)
+
+    output = f"📊 РАКЕТНЫЙ СКАНЕР от {datetime.now().strftime('%d.%m.%Y %H:%M')}\n\n"
+    found_count = 0
+
+    for i, quote in enumerate(r['quotes'], 1):
+        ticker = quote.get('symbol')
+        price = quote.get('regularMarketPrice')
+        change = quote.get('regularMarketChangePercent')
+        
+        if not price or not ticker: continue
+        
+        # 🔥 НОВАЯ МАТЕМАТИКА: Стоп 5%, Тейк 10%
+        stop = round(price * 0.95, 2)
+        target = round(price * 1.10, 2)
+        
+        output += f"⭐ BUY #{i}: {ticker}\n"
+        output += f"Stop Loss: ${stop}\n"
+        output += f"Breakout: ${price}\n"
+        output += f"Risk/Reward: 2.0:1\n" # (10% / 5% = 2.0)
+        
+        change_str = f"{change:.1f}%" if change is not None else "N/A"
+        output += f"(Текущий рост: {change_str})\n\n"
+        found_count += 1
+
+    with open("data/daily_scans/latest_rocket_scan.txt", "w", encoding="utf-8") as f:
+        f.write(output)
+    print(f"✅ Найдено ракет: {found_count}. Файл сохранен!")
 
 if __name__ == "__main__":
-    update_journal()
+    scan_rockets()
