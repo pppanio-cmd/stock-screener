@@ -1,32 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 27.10.2026 13:23
+📊 РАКЕТНЫЙ СКАНЕР от 04.11.2026 07:22
 
-⭐ BUY #1: AZTR
-Stop Loss: $1.42
-Breakout: $1.53
-Risk/Reward: 2.8:1
-(Текущий рост: 114.0%)
+⭐ BUY #1: MERC
+Stop Loss: $0.2
+Breakout: $0.212
+Risk/Reward: 2.0:1
+(Текущий рост: 68.3%)
 
-⭐ BUY #2: EAF
-Stop Loss: $9.9
-Breakout: $10.65
-Risk/Reward: 2.8:1
-(Текущий рост: 25.1%)
+⭐ BUY #2: CLVT
+Stop Loss: $1.99
+Breakout: $2.09
+Risk/Reward: 2.0:1
+(Текущий рост: 25.9%)
 
-⭐ BUY #3: XTND
-Stop Loss: $2.03
-Breakout: $2.18
-Risk/Reward: 2.8:1
-(Текущий рост: 23.2%)
+⭐ BUY #3: GPK
+Stop Loss: $10.74
+Breakout: $11.31
+Risk/Reward: 2.0:1
+(Текущий рост: 21.2%)
 
-⭐ BUY #4: MYND
-Stop Loss: $0.26
-Breakout: $0.2842
-Risk/Reward: 2.8:1
+⭐ BUY #4: CIFR
+Stop Loss: $7.71
+Breakout: $8.12
+Risk/Reward: 2.0:1
 (Текущий рост: 18.4%)
 
-⭐ BUY #5: ABOS
-Stop Loss: $2.11
-Breakout: $2.27
-Risk/Reward: 2.8:1
-(Текущий рост: 14.6%)
+⭐ BUY #5: IHRT
+Stop Loss: $1.99
+Breakout: $2.09
+Risk/Reward: 2.0:1
+(Текущий рост: 15.5%)
+
+⭐ BUY #6: GLXY
+Stop Loss: $15.99
+Breakout: $16.83
+Risk/Reward: 2.0:1
+(Текущий рост: 15.4%)
+
+⭐ BUY #7: NMRA
+Stop Loss: $0.54
+Breakout: $0.5709
+Risk/Reward: 2.0:1
+(Текущий рост: 15.2%)
+
+⭐ BUY #8: CMCO
+Stop Loss: $17.24
+Breakout: $18.15
+Risk/Reward: 2.0:1
+(Текущий рост: 15.2%)
+
+⭐ BUY #9: LENZ
+Stop Loss: $3.32
+Breakout: $3.5
+Risk/Reward: 2.0:1
+(Текущий рост: 14.8%)
+
+⭐ BUY #10: RXT
+Stop Loss: $2.55
+Breakout: $2.685
+Risk/Reward: 2.0:1
+(Текущий рост: 14.0%)
 
