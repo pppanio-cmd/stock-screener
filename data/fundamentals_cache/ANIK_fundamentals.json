@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ANIK",
-    "fetch_date": "2026-10-28T17:41:46.310105",
+    "fetch_date": "2026-11-04T19:07:25.634856",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 28219000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.876,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-28T17:41:46.311026"
+  "fetched_at": "2026-11-04T19:07:25.635694"
 }
