@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 04.11.2026 07:22
+📊 РАКЕТНЫЙ СКАНЕР от 05.11.2026 03:36
 
-⭐ BUY #1: MERC
-Stop Loss: $0.2
-Breakout: $0.212
+⭐ BUY #1: CMTG
+Stop Loss: $1.76
+Breakout: $1.85
 Risk/Reward: 2.0:1
-(Текущий рост: 68.3%)
+(Текущий рост: 66.7%)
 
-⭐ BUY #2: CLVT
-Stop Loss: $1.99
-Breakout: $2.09
+⭐ BUY #2: CRCT
+Stop Loss: $8.44
+Breakout: $8.88
 Risk/Reward: 2.0:1
-(Текущий рост: 25.9%)
+(Текущий рост: 48.7%)
 
-⭐ BUY #3: GPK
-Stop Loss: $10.74
-Breakout: $11.31
+⭐ BUY #3: LYEL
+Stop Loss: $14.66
+Breakout: $15.43
 Risk/Reward: 2.0:1
-(Текущий рост: 21.2%)
+(Текущий рост: 43.3%)
 
-⭐ BUY #4: CIFR
-Stop Loss: $7.71
-Breakout: $8.12
+⭐ BUY #4: KD
+Stop Loss: $16.0
+Breakout: $16.84
 Risk/Reward: 2.0:1
-(Текущий рост: 18.4%)
+(Текущий рост: 30.1%)
 
-⭐ BUY #5: IHRT
-Stop Loss: $1.99
-Breakout: $2.09
+⭐ BUY #5: OPRT
+Stop Loss: $12.36
+Breakout: $13.01
 Risk/Reward: 2.0:1
-(Текущий рост: 15.5%)
+(Текущий рост: 29.6%)
 
-⭐ BUY #6: GLXY
-Stop Loss: $15.99
-Breakout: $16.83
+⭐ BUY #6: DFH
+Stop Loss: $12.17
+Breakout: $12.81
 Risk/Reward: 2.0:1
-(Текущий рост: 15.4%)
+(Текущий рост: 26.8%)
 
-⭐ BUY #7: NMRA
-Stop Loss: $0.54
-Breakout: $0.5709
+⭐ BUY #7: ALIT
+Stop Loss: $12.11
+Breakout: $12.75
 Risk/Reward: 2.0:1
-(Текущий рост: 15.2%)
+(Текущий рост: 26.0%)
 
-⭐ BUY #8: CMCO
-Stop Loss: $17.24
-Breakout: $18.15
+⭐ BUY #8: STEM
+Stop Loss: $2.74
+Breakout: $2.88
 Risk/Reward: 2.0:1
-(Текущий рост: 15.2%)
+(Текущий рост: 21.5%)
 
-⭐ BUY #9: LENZ
-Stop Loss: $3.32
-Breakout: $3.5
+⭐ BUY #9: ANGI
+Stop Loss: $6.5
+Breakout: $6.84
 Risk/Reward: 2.0:1
-(Текущий рост: 14.8%)
+(Текущий рост: 21.3%)
 
-⭐ BUY #10: RXT
-Stop Loss: $2.55
-Breakout: $2.685
+⭐ BUY #10: SLQT
+Stop Loss: $0.47
+Breakout: $0.4914
 Risk/Reward: 2.0:1
-(Текущий рост: 14.0%)
+(Текущий рост: 19.9%)
 
