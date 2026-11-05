@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PDLB",
-    "fetch_date": "2026-10-29T18:30:01.348593",
+    "fetch_date": "2026-11-05T19:57:03.125777",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 26245000.0,
@@ -26,5 +26,5 @@
     "eps_yoy_change": 181.48148148148147,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-29T18:30:01.349623"
+  "fetched_at": "2026-11-05T19:57:03.126299"
 }
