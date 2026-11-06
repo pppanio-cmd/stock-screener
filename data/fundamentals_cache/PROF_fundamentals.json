@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PROF",
-    "fetch_date": "2026-10-30T18:12:27.340823",
+    "fetch_date": "2026-11-06T19:25:42.556406",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 2211000.0,
       "2025-09-30 00:00:00": 5289000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 4.211,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-30T18:12:27.342725"
+  "fetched_at": "2026-11-06T19:25:42.557654"
 }

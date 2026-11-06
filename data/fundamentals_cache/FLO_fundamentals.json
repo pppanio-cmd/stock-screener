@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "FLO",
-    "fetch_date": "2026-10-30T17:49:06.544141",
+    "fetch_date": "2026-11-06T19:02:24.279165",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 1242835000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.26,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-10-30T17:49:06.546140"
+  "fetched_at": "2026-11-06T19:02:24.280440"
 }
