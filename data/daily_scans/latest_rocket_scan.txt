@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 05.11.2026 03:36
+📊 РАКЕТНЫЙ СКАНЕР от 06.11.2026 03:30
 
-⭐ BUY #1: CMTG
-Stop Loss: $1.76
-Breakout: $1.85
+⭐ BUY #1: PLCE
+Stop Loss: $0.32
+Breakout: $0.3361
 Risk/Reward: 2.0:1
-(Текущий рост: 66.7%)
+(Текущий рост: 39.5%)
 
-⭐ BUY #2: CRCT
-Stop Loss: $8.44
-Breakout: $8.88
+⭐ BUY #2: DNUT
+Stop Loss: $4.37
+Breakout: $4.6
 Risk/Reward: 2.0:1
-(Текущий рост: 48.7%)
+(Текущий рост: 30.7%)
 
-⭐ BUY #3: LYEL
-Stop Loss: $14.66
-Breakout: $15.43
+⭐ BUY #3: PTLO
+Stop Loss: $6.67
+Breakout: $7.02
 Risk/Reward: 2.0:1
-(Текущий рост: 43.3%)
+(Текущий рост: 28.8%)
 
-⭐ BUY #4: KD
-Stop Loss: $16.0
-Breakout: $16.84
+⭐ BUY #4: TBI
+Stop Loss: $11.74
+Breakout: $12.36
 Risk/Reward: 2.0:1
-(Текущий рост: 30.1%)
+(Текущий рост: 25.6%)
 
-⭐ BUY #5: OPRT
-Stop Loss: $12.36
-Breakout: $13.01
+⭐ BUY #5: XERS
+Stop Loss: $12.43
+Breakout: $13.08
 Risk/Reward: 2.0:1
-(Текущий рост: 29.6%)
+(Текущий рост: 25.0%)
 
-⭐ BUY #6: DFH
-Stop Loss: $12.17
-Breakout: $12.81
+⭐ BUY #6: ARDT
+Stop Loss: $15.11
+Breakout: $15.9
 Risk/Reward: 2.0:1
-(Текущий рост: 26.8%)
+(Текущий рост: 22.4%)
 
-⭐ BUY #7: ALIT
-Stop Loss: $12.11
-Breakout: $12.75
+⭐ BUY #7: LYNX
+Stop Loss: $10.77
+Breakout: $11.34
 Risk/Reward: 2.0:1
-(Текущий рост: 26.0%)
+(Текущий рост: 20.8%)
 
-⭐ BUY #8: STEM
-Stop Loss: $2.74
-Breakout: $2.88
+⭐ BUY #8: ONT
+Stop Loss: $18.45
+Breakout: $19.42
 Risk/Reward: 2.0:1
-(Текущий рост: 21.5%)
+(Текущий рост: 20.4%)
 
-⭐ BUY #9: ANGI
-Stop Loss: $6.5
-Breakout: $6.84
+⭐ BUY #9: FUN
+Stop Loss: $8.78
+Breakout: $9.24
 Risk/Reward: 2.0:1
-(Текущий рост: 21.3%)
+(Текущий рост: 16.5%)
 
-⭐ BUY #10: SLQT
-Stop Loss: $0.47
-Breakout: $0.4914
+⭐ BUY #10: LODE
+Stop Loss: $1.63
+Breakout: $1.72
 Risk/Reward: 2.0:1
-(Текущий рост: 19.9%)
+(Текущий рост: 15.4%)
 
