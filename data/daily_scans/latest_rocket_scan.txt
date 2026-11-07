@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 06.11.2026 03:30
+📊 РАКЕТНЫЙ СКАНЕР от 07.11.2026 02:59
 
-⭐ BUY #1: PLCE
-Stop Loss: $0.32
-Breakout: $0.3361
+⭐ BUY #1: GOGO
+Stop Loss: $3.69
+Breakout: $3.885
 Risk/Reward: 2.0:1
-(Текущий рост: 39.5%)
+(Текущий рост: 71.5%)
 
-⭐ BUY #2: DNUT
-Stop Loss: $4.37
-Breakout: $4.6
+⭐ BUY #2: OPTU
+Stop Loss: $0.71
+Breakout: $0.7521
 Risk/Reward: 2.0:1
-(Текущий рост: 30.7%)
+(Текущий рост: 32.1%)
 
-⭐ BUY #3: PTLO
-Stop Loss: $6.67
-Breakout: $7.02
+⭐ BUY #3: LYNX
+Stop Loss: $13.86
+Breakout: $14.59
 Risk/Reward: 2.0:1
-(Текущий рост: 28.8%)
+(Текущий рост: 28.7%)
 
-⭐ BUY #4: TBI
-Stop Loss: $11.74
-Breakout: $12.36
+⭐ BUY #4: THM
+Stop Loss: $1.46
+Breakout: $1.54
 Risk/Reward: 2.0:1
-(Текущий рост: 25.6%)
+(Текущий рост: 27.3%)
 
-⭐ BUY #5: XERS
-Stop Loss: $12.43
-Breakout: $13.08
+⭐ BUY #5: CLNE
+Stop Loss: $1.81
+Breakout: $1.91
 Risk/Reward: 2.0:1
-(Текущий рост: 25.0%)
+(Текущий рост: 26.5%)
 
-⭐ BUY #6: ARDT
-Stop Loss: $15.11
-Breakout: $15.9
+⭐ BUY #6: ANVS
+Stop Loss: $0.8
+Breakout: $0.8449
 Risk/Reward: 2.0:1
-(Текущий рост: 22.4%)
+(Текущий рост: 26.3%)
 
-⭐ BUY #7: LYNX
-Stop Loss: $10.77
-Breakout: $11.34
+⭐ BUY #7: SLQT
+Stop Loss: $0.46
+Breakout: $0.4801
 Risk/Reward: 2.0:1
-(Текущий рост: 20.8%)
+(Текущий рост: 23.1%)
 
-⭐ BUY #8: ONT
-Stop Loss: $18.45
-Breakout: $19.42
+⭐ BUY #8: SES
+Stop Loss: $0.79
+Breakout: $0.8328
 Risk/Reward: 2.0:1
-(Текущий рост: 20.4%)
+(Текущий рост: 22.8%)
 
-⭐ BUY #9: FUN
-Stop Loss: $8.78
-Breakout: $9.24
+⭐ BUY #9: EVC
+Stop Loss: $8.54
+Breakout: $8.99
 Risk/Reward: 2.0:1
-(Текущий рост: 16.5%)
+(Текущий рост: 19.9%)
 
-⭐ BUY #10: LODE
-Stop Loss: $1.63
-Breakout: $1.72
+⭐ BUY #10: AEVA
+Stop Loss: $10.45
+Breakout: $11.0
 Risk/Reward: 2.0:1
-(Текущий рост: 15.4%)
+(Текущий рост: 19.7%)
 
