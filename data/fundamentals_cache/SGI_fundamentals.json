@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SGI",
-    "fetch_date": "2026-11-02T21:53:33.138591",
+    "fetch_date": "2026-11-09T22:35:04.177571",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 1880800000.0,
       "2025-09-30 00:00:00": 2122600000.0,
@@ -35,5 +35,5 @@
     "inventory_to_sales_ratio": 0.356,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-02T21:53:33.140659"
+  "fetched_at": "2026-11-09T22:35:04.178876"
 }
