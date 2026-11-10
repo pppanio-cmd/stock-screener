@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 07.11.2026 02:59
+📊 РАКЕТНЫЙ СКАНЕР от 10.11.2026 04:43
 
-⭐ BUY #1: GOGO
-Stop Loss: $3.69
-Breakout: $3.885
+⭐ BUY #1: CKX
+Stop Loss: $15.58
+Breakout: $16.4
 Risk/Reward: 2.0:1
-(Текущий рост: 71.5%)
+(Текущий рост: 58.1%)
 
-⭐ BUY #2: OPTU
-Stop Loss: $0.71
-Breakout: $0.7521
+⭐ BUY #2: GFR
+Stop Loss: $7.34
+Breakout: $7.73
 Risk/Reward: 2.0:1
-(Текущий рост: 32.1%)
+(Текущий рост: 38.0%)
 
-⭐ BUY #3: LYNX
-Stop Loss: $13.86
-Breakout: $14.59
+⭐ BUY #3: FJET
+Stop Loss: $1.04
+Breakout: $1.09
 Risk/Reward: 2.0:1
-(Текущий рост: 28.7%)
+(Текущий рост: 33.2%)
 
-⭐ BUY #4: THM
-Stop Loss: $1.46
-Breakout: $1.54
+⭐ BUY #4: GPUS
+Stop Loss: $0.18
+Breakout: $0.1895
 Risk/Reward: 2.0:1
-(Текущий рост: 27.3%)
+(Текущий рост: 32.6%)
 
-⭐ BUY #5: CLNE
-Stop Loss: $1.81
-Breakout: $1.91
+⭐ BUY #5: FRVO
+Stop Loss: $10.81
+Breakout: $11.38
 Risk/Reward: 2.0:1
-(Текущий рост: 26.5%)
+(Текущий рост: 26.1%)
 
-⭐ BUY #6: ANVS
-Stop Loss: $0.8
-Breakout: $0.8449
+⭐ BUY #6: ASPN
+Stop Loss: $5.8
+Breakout: $6.11
 Risk/Reward: 2.0:1
-(Текущий рост: 26.3%)
+(Текущий рост: 24.4%)
 
-⭐ BUY #7: SLQT
-Stop Loss: $0.46
-Breakout: $0.4801
+⭐ BUY #7: HLLY
+Stop Loss: $2.48
+Breakout: $2.61
 Risk/Reward: 2.0:1
-(Текущий рост: 23.1%)
+(Текущий рост: 24.3%)
 
-⭐ BUY #8: SES
-Stop Loss: $0.79
-Breakout: $0.8328
+⭐ BUY #8: UAMY
+Stop Loss: $3.3
+Breakout: $3.47
 Risk/Reward: 2.0:1
-(Текущий рост: 22.8%)
+(Текущий рост: 23.0%)
 
-⭐ BUY #9: EVC
-Stop Loss: $8.54
-Breakout: $8.99
+⭐ BUY #9: LENZ
+Stop Loss: $4.08
+Breakout: $4.29
 Risk/Reward: 2.0:1
-(Текущий рост: 19.9%)
+(Текущий рост: 22.6%)
 
-⭐ BUY #10: AEVA
-Stop Loss: $10.45
-Breakout: $11.0
+⭐ BUY #10: RC
+Stop Loss: $0.99
+Breakout: $1.04
 Risk/Reward: 2.0:1
-(Текущий рост: 19.7%)
+(Текущий рост: 22.1%)
 
