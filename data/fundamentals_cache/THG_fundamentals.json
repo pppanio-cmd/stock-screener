@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "THG",
-    "fetch_date": "2026-11-03T19:44:12.702381",
+    "fetch_date": "2026-11-10T19:57:26.846695",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 1658200000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": -0.8163265306122455,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:44:12.702948"
+  "fetched_at": "2026-11-10T19:57:26.847431"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PSA",
-    "fetch_date": "2026-11-03T19:34:36.858598",
+    "fetch_date": "2026-11-10T19:47:51.838269",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": 39.41,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:34:36.859605"
+  "fetched_at": "2026-11-10T19:47:51.839536"
 }

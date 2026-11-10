@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "HSBC",
-    "fetch_date": "2026-11-03T19:16:28.438469",
+    "fetch_date": "2026-11-10T19:29:46.665282",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": 17740000000.0,
       "2025-06-30 00:00:00": 17657000000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": null,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:16:28.439081"
+  "fetched_at": "2026-11-10T19:29:46.666016"
 }

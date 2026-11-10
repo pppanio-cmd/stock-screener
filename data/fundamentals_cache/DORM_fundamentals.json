@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "DORM",
-    "fetch_date": "2026-11-03T19:06:13.816431",
+    "fetch_date": "2026-11-10T19:19:43.691292",
     "quarterly_revenue": {
       "2025-09-30 00:00:00": 543736000.0,
       "2025-12-31 00:00:00": 537932000.0,
@@ -36,5 +36,5 @@
     "inventory_to_sales_ratio": 1.402,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:06:13.817706"
+  "fetched_at": "2026-11-10T19:19:43.692914"
 }

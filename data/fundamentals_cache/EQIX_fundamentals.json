@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "EQIX",
-    "fetch_date": "2026-11-03T19:08:32.266144",
+    "fetch_date": "2026-11-10T19:22:03.756820",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 2316000000.0,
@@ -27,5 +27,5 @@
     "operating_margin": 24.58,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:08:32.267140"
+  "fetched_at": "2026-11-10T19:22:03.758115"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SYF",
-    "fetch_date": "2026-11-03T19:43:14.677187",
+    "fetch_date": "2026-11-10T19:56:28.936217",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-09-30 00:00:00": 3823000000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": -6.2940667011420555,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:43:14.677761"
+  "fetched_at": "2026-11-10T19:56:28.936937"
 }

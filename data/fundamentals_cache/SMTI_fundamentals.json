@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "SMTI",
-    "fetch_date": "2026-11-03T19:40:59.869293",
+    "fetch_date": "2026-11-10T19:54:13.864008",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 25804252.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.123,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:40:59.870549"
+  "fetched_at": "2026-11-10T19:54:13.865800"
 }

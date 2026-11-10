@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ORIC",
-    "fetch_date": "2026-11-03T19:31:15.607355",
+    "fetch_date": "2026-11-10T19:44:30.929570",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 0.0,
       "2025-09-30 00:00:00": 0.0,
@@ -23,5 +23,5 @@
     "operating_margin": 0,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:31:15.608097"
+  "fetched_at": "2026-11-10T19:44:30.930538"
 }

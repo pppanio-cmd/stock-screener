@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ILMN",
-    "fetch_date": "2026-11-03T19:17:46.580579",
+    "fetch_date": "2026-11-10T19:31:04.644246",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 1059000000.0,
       "2025-09-30 00:00:00": 1084000000.0,
@@ -38,5 +38,5 @@
     "inventory_to_sales_ratio": 0.591,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:17:46.581883"
+  "fetched_at": "2026-11-10T19:31:04.645911"
 }

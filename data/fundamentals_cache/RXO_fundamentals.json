@@ -1,17 +1,17 @@
 {
   "data": {
     "ticker": "RXO",
-    "fetch_date": "2026-11-03T19:38:03.443954",
+    "fetch_date": "2026-11-10T19:51:17.894705",
     "quarterly_revenue": {
-      "2025-06-30 00:00:00": 1419000000.0,
+      "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 1421000000.0,
       "2025-12-31 00:00:00": 1469000000.0,
       "2026-03-31 00:00:00": 1425000000.0,
       "2026-06-30 00:00:00": 1774000000.0,
-      "2026-09-30 00:00:00": NaN
+      "2026-09-30 00:00:00": 1871000000.0
     },
-    "revenue_qoq_change": null,
-    "revenue_yoy_change": null,
+    "revenue_qoq_change": 5.467869222096956,
+    "revenue_yoy_change": 31.667839549612946,
     "quarterly_eps": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": -0.08,
@@ -22,10 +22,10 @@
     },
     "eps_qoq_change": 140.0,
     "eps_yoy_change": 125.0,
-    "gross_margin": NaN,
-    "margin_change": NaN,
-    "operating_margin": NaN,
+    "gross_margin": 13.2,
+    "margin_change": 0.63,
+    "operating_margin": 1.28,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:38:03.444934"
+  "fetched_at": "2026-11-10T19:51:17.896005"
 }

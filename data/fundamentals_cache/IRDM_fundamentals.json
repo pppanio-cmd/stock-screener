@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "IRDM",
-    "fetch_date": "2026-11-03T19:18:52.535257",
+    "fetch_date": "2026-11-10T19:32:10.751413",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 216906000.0,
       "2025-09-30 00:00:00": 226935000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": NaN,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:18:52.536527"
+  "fetched_at": "2026-11-10T19:32:10.753031"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MAN",
-    "fetch_date": "2026-11-03T19:23:43.898043",
+    "fetch_date": "2026-11-10T19:37:01.856173",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": 1.7,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:23:43.899057"
+  "fetched_at": "2026-11-10T19:37:01.857549"
 }

@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "PFG",
-    "fetch_date": "2026-11-03T19:32:52.749513",
+    "fetch_date": "2026-11-10T19:46:08.015242",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 3681600000.0,
@@ -24,5 +24,5 @@
     "eps_yoy_change": 206.31578947368422,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:32:52.750061"
+  "fetched_at": "2026-11-10T19:46:08.015963"
 }

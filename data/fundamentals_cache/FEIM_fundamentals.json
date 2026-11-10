@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "FEIM",
-    "fetch_date": "2026-11-03T19:10:18.927804",
+    "fetch_date": "2026-11-10T19:23:39.694901",
     "quarterly_revenue": {
       "2025-04-30 00:00:00": NaN,
       "2025-07-31 00:00:00": 13812000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.947,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:10:18.929083"
+  "fetched_at": "2026-11-10T19:23:39.696653"
 }

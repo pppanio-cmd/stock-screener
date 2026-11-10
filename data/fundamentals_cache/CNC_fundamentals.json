@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "CNC",
-    "fetch_date": "2026-11-03T19:02:10.405786",
+    "fetch_date": "2026-11-10T19:15:43.543874",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -29,5 +29,5 @@
     "operating_margin": -0.61,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:02:10.406851"
+  "fetched_at": "2026-11-10T19:15:43.545247"
 }

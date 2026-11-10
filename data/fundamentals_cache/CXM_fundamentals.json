@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "CXM",
-    "fetch_date": "2026-11-03T19:04:35.335802",
+    "fetch_date": "2026-11-10T19:18:08.648146",
     "quarterly_revenue": {
       "2025-07-31 00:00:00": 212040000.0,
       "2025-10-31 00:00:00": 219068000.0,
@@ -25,5 +25,5 @@
     "operating_margin": 4.46,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:04:35.336790"
+  "fetched_at": "2026-11-10T19:18:08.649432"
 }

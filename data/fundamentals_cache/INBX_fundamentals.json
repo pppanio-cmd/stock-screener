@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "INBX",
-    "fetch_date": "2026-11-03T19:18:02.498798",
+    "fetch_date": "2026-11-10T19:31:20.586606",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 1300000.0,
       "2025-09-30 00:00:00": 0.0,
@@ -23,5 +23,5 @@
     "operating_margin": 0,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:18:02.499560"
+  "fetched_at": "2026-11-10T19:31:20.587594"
 }

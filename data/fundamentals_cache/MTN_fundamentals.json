@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "MTN",
-    "fetch_date": "2026-11-03T19:26:32.090825",
+    "fetch_date": "2026-11-10T19:39:49.779598",
     "quarterly_revenue": {
       "2025-04-30 00:00:00": NaN,
       "2025-07-31 00:00:00": 271289000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.484,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:26:32.092109"
+  "fetched_at": "2026-11-10T19:39:49.781221"
 }

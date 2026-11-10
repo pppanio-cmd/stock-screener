@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "TFC",
-    "fetch_date": "2026-11-03T19:43:58.732098",
+    "fetch_date": "2026-11-10T19:57:13.014081",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 4987000000.0,
@@ -26,5 +26,5 @@
     "eps_yoy_change": -46.15384615384615,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:43:58.732678"
+  "fetched_at": "2026-11-10T19:57:13.014828"
 }

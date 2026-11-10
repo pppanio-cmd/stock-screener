@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "RGEN",
-    "fetch_date": "2026-11-03T19:36:41.512902",
+    "fetch_date": "2026-11-10T19:49:55.903339",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": NaN,
       "2025-09-30 00:00:00": 188805000.0,
@@ -38,5 +38,5 @@
     "inventory_to_sales_ratio": 0.87,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:36:41.514206"
+  "fetched_at": "2026-11-10T19:49:55.904996"
 }

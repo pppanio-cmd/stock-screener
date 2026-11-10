@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ERIE",
-    "fetch_date": "2026-11-03T19:08:37.218431",
+    "fetch_date": "2026-11-10T19:22:08.613729",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": NaN,
@@ -26,5 +26,5 @@
     "eps_yoy_change": -0.571428571428572,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:08:37.219009"
+  "fetched_at": "2026-11-10T19:22:08.614477"
 }
