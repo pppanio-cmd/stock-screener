@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "RBC",
-    "fetch_date": "2026-11-03T19:35:50.779905",
+    "fetch_date": "2026-11-11T19:46:22.030130",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-09-30 00:00:00": 455300000.0,
@@ -38,5 +38,5 @@
     "inventory_to_sales_ratio": 1.506,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-03T19:35:50.781214"
+  "fetched_at": "2026-11-11T19:46:22.031435"
 }
