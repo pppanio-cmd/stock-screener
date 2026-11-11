@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 10.11.2026 04:43
+📊 РАКЕТНЫЙ СКАНЕР от 11.11.2026 02:54
 
-⭐ BUY #1: CKX
-Stop Loss: $15.58
-Breakout: $16.4
+⭐ BUY #1: PEPG
+Stop Loss: $4.38
+Breakout: $4.61
 Risk/Reward: 2.0:1
-(Текущий рост: 58.1%)
+(Текущий рост: 92.9%)
 
-⭐ BUY #2: GFR
-Stop Loss: $7.34
-Breakout: $7.73
+⭐ BUY #2: OPENZ
+Stop Loss: $0.04
+Breakout: $0.0385
 Risk/Reward: 2.0:1
-(Текущий рост: 38.0%)
+(Текущий рост: 84.9%)
 
-⭐ BUY #3: FJET
-Stop Loss: $1.04
-Breakout: $1.09
+⭐ BUY #3: TTEC
+Stop Loss: $2.28
+Breakout: $2.4
 Risk/Reward: 2.0:1
-(Текущий рост: 33.2%)
+(Текущий рост: 72.0%)
 
-⭐ BUY #4: GPUS
-Stop Loss: $0.18
-Breakout: $0.1895
+⭐ BUY #4: MI
+Stop Loss: $0.39
+Breakout: $0.4065
 Risk/Reward: 2.0:1
-(Текущий рост: 32.6%)
+(Текущий рост: 65.0%)
 
-⭐ BUY #5: FRVO
-Stop Loss: $10.81
-Breakout: $11.38
+⭐ BUY #5: ZIP
+Stop Loss: $6.26
+Breakout: $6.59
 Risk/Reward: 2.0:1
-(Текущий рост: 26.1%)
+(Текущий рост: 53.6%)
 
-⭐ BUY #6: ASPN
-Stop Loss: $5.8
-Breakout: $6.11
+⭐ BUY #6: HUMA
+Stop Loss: $0.56
+Breakout: $0.59
 Risk/Reward: 2.0:1
-(Текущий рост: 24.4%)
+(Текущий рост: 29.6%)
 
-⭐ BUY #7: HLLY
-Stop Loss: $2.48
-Breakout: $2.61
+⭐ BUY #7: SECZ
+Stop Loss: $8.1
+Breakout: $8.53
 Risk/Reward: 2.0:1
-(Текущий рост: 24.3%)
+(Текущий рост: 22.4%)
 
-⭐ BUY #8: UAMY
-Stop Loss: $3.3
-Breakout: $3.47
-Risk/Reward: 2.0:1
-(Текущий рост: 23.0%)
-
-⭐ BUY #9: LENZ
-Stop Loss: $4.08
-Breakout: $4.29
-Risk/Reward: 2.0:1
-(Текущий рост: 22.6%)
-
-⭐ BUY #10: RC
-Stop Loss: $0.99
-Breakout: $1.04
+⭐ BUY #8: KULR
+Stop Loss: $1.89
+Breakout: $1.99
 Risk/Reward: 2.0:1
 (Текущий рост: 22.1%)
+
+⭐ BUY #9: CTM
+Stop Loss: $0.43
+Breakout: $0.4501
+Risk/Reward: 2.0:1
+(Текущий рост: 20.0%)
+
+⭐ BUY #10: BW
+Stop Loss: $4.26
+Breakout: $4.48
+Risk/Reward: 2.0:1
+(Текущий рост: 18.2%)
 
