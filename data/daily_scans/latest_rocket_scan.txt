@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 11.11.2026 02:54
+📊 РАКЕТНЫЙ СКАНЕР от 12.11.2026 03:58
 
-⭐ BUY #1: PEPG
-Stop Loss: $4.38
-Breakout: $4.61
+⭐ BUY #1: BGS
+Stop Loss: $3.49
+Breakout: $3.67
 Risk/Reward: 2.0:1
-(Текущий рост: 92.9%)
+(Текущий рост: 38.0%)
 
-⭐ BUY #2: OPENZ
-Stop Loss: $0.04
-Breakout: $0.0385
+⭐ BUY #2: CANG
+Stop Loss: $1.48
+Breakout: $1.56
 Risk/Reward: 2.0:1
-(Текущий рост: 84.9%)
+(Текущий рост: 36.8%)
 
-⭐ BUY #3: TTEC
-Stop Loss: $2.28
-Breakout: $2.4
+⭐ BUY #3: BURU
+Stop Loss: $0.26
+Breakout: $0.27
 Risk/Reward: 2.0:1
-(Текущий рост: 72.0%)
+(Текущий рост: 33.9%)
 
-⭐ BUY #4: MI
-Stop Loss: $0.39
-Breakout: $0.4065
+⭐ BUY #4: OPTT
+Stop Loss: $0.54
+Breakout: $0.5723
 Risk/Reward: 2.0:1
-(Текущий рост: 65.0%)
+(Текущий рост: 32.4%)
 
-⭐ BUY #5: ZIP
-Stop Loss: $6.26
-Breakout: $6.59
+⭐ BUY #5: FOSL
+Stop Loss: $9.47
+Breakout: $9.97
 Risk/Reward: 2.0:1
-(Текущий рост: 53.6%)
+(Текущий рост: 26.7%)
 
-⭐ BUY #6: HUMA
-Stop Loss: $0.56
-Breakout: $0.59
+⭐ BUY #6: CAPR
+Stop Loss: $10.66
+Breakout: $11.22
 Risk/Reward: 2.0:1
-(Текущий рост: 29.6%)
+(Текущий рост: 26.5%)
 
-⭐ BUY #7: SECZ
-Stop Loss: $8.1
-Breakout: $8.53
+⭐ BUY #7: ZDGE
+Stop Loss: $2.74
+Breakout: $2.88
 Risk/Reward: 2.0:1
-(Текущий рост: 22.4%)
+(Текущий рост: 25.8%)
 
-⭐ BUY #8: KULR
-Stop Loss: $1.89
-Breakout: $1.99
+⭐ BUY #8: MI
+Stop Loss: $0.49
+Breakout: $0.511
 Risk/Reward: 2.0:1
-(Текущий рост: 22.1%)
+(Текущий рост: 25.7%)
 
-⭐ BUY #9: CTM
-Stop Loss: $0.43
-Breakout: $0.4501
+⭐ BUY #9: RSKD
+Stop Loss: $9.85
+Breakout: $10.37
 Risk/Reward: 2.0:1
-(Текущий рост: 20.0%)
+(Текущий рост: 22.3%)
 
-⭐ BUY #10: BW
-Stop Loss: $4.26
-Breakout: $4.48
+⭐ BUY #10: EQPT
+Stop Loss: $15.19
+Breakout: $15.99
 Risk/Reward: 2.0:1
-(Текущий рост: 18.2%)
+(Текущий рост: 18.1%)
 
