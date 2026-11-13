@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "KT",
-    "fetch_date": "2026-11-06T19:12:27.425085",
+    "fetch_date": "2026-11-13T19:27:45.404024",
     "quarterly_revenue": {
       "2025-03-31 00:00:00": NaN,
       "2025-06-30 00:00:00": 7427337000000.0,
@@ -37,5 +37,5 @@
     "inventory_to_sales_ratio": 0.094,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-06T19:12:27.426416"
+  "fetched_at": "2026-11-13T19:27:45.405280"
 }

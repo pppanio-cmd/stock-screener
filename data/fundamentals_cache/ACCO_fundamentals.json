@@ -1,7 +1,7 @@
 {
   "data": {
     "ticker": "ACCO",
-    "fetch_date": "2026-11-06T18:41:04.300030",
+    "fetch_date": "2026-11-13T18:56:27.089852",
     "quarterly_revenue": {
       "2025-06-30 00:00:00": 394800000.0,
       "2025-09-30 00:00:00": 383700000.0,
@@ -38,5 +38,5 @@
     "inventory_to_sales_ratio": 0.784,
     "inventory_breakdown_available": false
   },
-  "fetched_at": "2026-11-06T18:41:04.301848"
+  "fetched_at": "2026-11-13T18:56:27.091218"
 }
