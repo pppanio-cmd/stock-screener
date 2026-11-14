@@ -1,62 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 13.11.2026 03:29
+📊 РАКЕТНЫЙ СКАНЕР от 14.11.2026 03:25
 
-⭐ BUY #1: POAS
-Stop Loss: $2.86
-Breakout: $3.01
+⭐ BUY #1: SLND
+Stop Loss: $0.89
+Breakout: $0.9401
 Risk/Reward: 2.0:1
-(Текущий рост: 234.2%)
+(Текущий рост: 49.2%)
 
-⭐ BUY #2: PLCE
-Stop Loss: $0.42
-Breakout: $0.444
+⭐ BUY #2: NMAX
+Stop Loss: $9.1
+Breakout: $9.58
 Risk/Reward: 2.0:1
-(Текущий рост: 123.7%)
+(Текущий рост: 31.4%)
 
-⭐ BUY #3: ICMB
-Stop Loss: $1.01
-Breakout: $1.06
+⭐ BUY #3: BIRD
+Stop Loss: $1.36
+Breakout: $1.43
 Risk/Reward: 2.0:1
-(Текущий рост: 71.5%)
+(Текущий рост: 28.8%)
 
-⭐ BUY #4: TGEN
-Stop Loss: $2.11
-Breakout: $2.22
+⭐ BUY #4: FRMI
+Stop Loss: $2.48
+Breakout: $2.61
 Risk/Reward: 2.0:1
-(Текущий рост: 30.6%)
+(Текущий рост: 26.7%)
 
-⭐ BUY #5: SOS
-Stop Loss: $0.21
-Breakout: $0.2204
+⭐ BUY #5: VNRX
+Stop Loss: $0.22
+Breakout: $0.23
 Risk/Reward: 2.0:1
-(Текущий рост: 21.5%)
+(Текущий рост: 24.7%)
 
-⭐ BUY #6: OPTT
-Stop Loss: $0.65
-Breakout: $0.6845
+⭐ BUY #6: HAWK
+Stop Loss: $17.25
+Breakout: $18.16
 Risk/Reward: 2.0:1
-(Текущий рост: 19.6%)
+(Текущий рост: 23.8%)
 
-⭐ BUY #7: FRMI
-Stop Loss: $1.96
-Breakout: $2.06
+⭐ BUY #7: CDXS
+Stop Loss: $1.1
+Breakout: $1.16
 Risk/Reward: 2.0:1
-(Текущий рост: 13.8%)
+(Текущий рост: 21.1%)
 
-⭐ BUY #8: AVEX
-Stop Loss: $13.07
-Breakout: $13.76
+⭐ BUY #8: SOC
+Stop Loss: $0.69
+Breakout: $0.7299
 Risk/Reward: 2.0:1
-(Текущий рост: 13.4%)
+(Текущий рост: 17.7%)
 
-⭐ BUY #9: MERC
-Stop Loss: $0.25
-Breakout: $0.261
+⭐ BUY #9: CDNL
+Stop Loss: $6.14
+Breakout: $6.46
 Risk/Reward: 2.0:1
-(Текущий рост: 11.5%)
+(Текущий рост: 14.5%)
 
-⭐ BUY #10: TTEC
-Stop Loss: $2.81
-Breakout: $2.96
+⭐ BUY #10: UNIT
+Stop Loss: $4.64
+Breakout: $4.88
 Risk/Reward: 2.0:1
-(Текущий рост: 10.9%)
+(Текущий рост: 13.5%)
 
