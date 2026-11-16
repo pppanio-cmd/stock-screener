@@ -6590,5 +6590,21 @@
   "WFRD": {
     "last_updated": "2026-11-13T19:56:12.458721",
     "in_earnings_season": true
+  },
+  "GTY": {
+    "last_updated": "2026-11-16T21:50:29.829453",
+    "in_earnings_season": false
+  },
+  "LEGH": {
+    "last_updated": "2026-11-16T21:57:38.823671",
+    "in_earnings_season": false
+  },
+  "NWAX": {
+    "last_updated": "2026-11-16T22:05:11.743898",
+    "in_earnings_season": false
+  },
+  "RUN": {
+    "last_updated": "2026-11-16T22:13:36.860703",
+    "in_earnings_season": false
   }
 }
