@@ -1,62 +1,44 @@
-📊 РАКЕТНЫЙ СКАНЕР от 14.11.2026 03:25
+📊 РАКЕТНЫЙ СКАНЕР от 17.11.2026 05:09
 
-⭐ BUY #1: SLND
-Stop Loss: $0.89
-Breakout: $0.9401
+⭐ BUY #1: OPENL
+Stop Loss: $0.02
+Breakout: $0.0221
 Risk/Reward: 2.0:1
-(Текущий рост: 49.2%)
+(Текущий рост: 64.9%)
 
-⭐ BUY #2: NMAX
-Stop Loss: $9.1
-Breakout: $9.58
+⭐ BUY #2: CVM
+Stop Loss: $1.58
+Breakout: $1.66
 Risk/Reward: 2.0:1
-(Текущий рост: 31.4%)
+(Текущий рост: 29.7%)
 
-⭐ BUY #3: BIRD
-Stop Loss: $1.36
-Breakout: $1.43
+⭐ BUY #3: OFRM
+Stop Loss: $11.11
+Breakout: $11.7
 Risk/Reward: 2.0:1
-(Текущий рост: 28.8%)
+(Текущий рост: 21.2%)
 
-⭐ BUY #4: FRMI
-Stop Loss: $2.48
-Breakout: $2.61
+⭐ BUY #4: OPTU
+Stop Loss: $0.6
+Breakout: $0.6273
 Risk/Reward: 2.0:1
-(Текущий рост: 26.7%)
+(Текущий рост: 19.6%)
 
-⭐ BUY #5: VNRX
-Stop Loss: $0.22
-Breakout: $0.23
+⭐ BUY #5: TU
+Stop Loss: $9.09
+Breakout: $9.57
 Risk/Reward: 2.0:1
-(Текущий рост: 24.7%)
+(Текущий рост: 12.2%)
 
-⭐ BUY #6: HAWK
-Stop Loss: $17.25
-Breakout: $18.16
+⭐ BUY #6: ZIP
+Stop Loss: $5.8
+Breakout: $6.11
 Risk/Reward: 2.0:1
-(Текущий рост: 23.8%)
+(Текущий рост: 10.9%)
 
-⭐ BUY #7: CDXS
-Stop Loss: $1.1
-Breakout: $1.16
+⭐ BUY #7: OPENZ
+Stop Loss: $0.02
+Breakout: $0.0237
 Risk/Reward: 2.0:1
-(Текущий рост: 21.1%)
-
-⭐ BUY #8: SOC
-Stop Loss: $0.69
-Breakout: $0.7299
-Risk/Reward: 2.0:1
-(Текущий рост: 17.7%)
-
-⭐ BUY #9: CDNL
-Stop Loss: $6.14
-Breakout: $6.46
-Risk/Reward: 2.0:1
-(Текущий рост: 14.5%)
-
-⭐ BUY #10: UNIT
-Stop Loss: $4.64
-Breakout: $4.88
-Risk/Reward: 2.0:1
-(Текущий рост: 13.5%)
+(Текущий рост: 10.2%)
 
