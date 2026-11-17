@@ -6606,5 +6606,13 @@
   "RUN": {
     "last_updated": "2026-11-16T22:13:36.860703",
     "in_earnings_season": false
+  },
+  "EVI": {
+    "last_updated": "2026-11-17T20:33:30.152983",
+    "in_earnings_season": false
+  },
+  "TWST": {
+    "last_updated": "2026-11-17T21:10:11.398456",
+    "in_earnings_season": false
   }
 }
