@@ -6614,5 +6614,29 @@
   "TWST": {
     "last_updated": "2026-11-17T21:10:11.398456",
     "in_earnings_season": false
+  },
+  "ABSI": {
+    "last_updated": "2026-11-18T19:45:05.573308",
+    "in_earnings_season": false
+  },
+  "BILL": {
+    "last_updated": "2026-11-18T19:52:22.691315",
+    "in_earnings_season": false
+  },
+  "ELA": {
+    "last_updated": "2026-11-18T20:03:18.836121",
+    "in_earnings_season": false
+  },
+  "HZN": {
+    "last_updated": "2026-11-18T20:12:29.008913",
+    "in_earnings_season": false
+  },
+  "MANE": {
+    "last_updated": "2026-11-18T20:19:04.809990",
+    "in_earnings_season": false
+  },
+  "VRSA": {
+    "last_updated": "2026-11-18T20:43:54.186434",
+    "in_earnings_season": false
   }
 }
