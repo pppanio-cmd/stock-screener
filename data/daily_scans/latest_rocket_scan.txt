@@ -1,56 +1,62 @@
-📊 РАКЕТНЫЙ СКАНЕР от 19.11.2026 04:20
+📊 РАКЕТНЫЙ СКАНЕР от 20.11.2026 04:07
 
-⭐ BUY #1: MPU
-Stop Loss: $2.7
-Breakout: $2.84
+⭐ BUY #1: LVWR
+Stop Loss: $0.62
+Breakout: $0.6529
 Risk/Reward: 2.0:1
-(Текущий рост: 34.0%)
+(Текущий рост: 76.6%)
 
-⭐ BUY #2: BRBR
-Stop Loss: $12.98
-Breakout: $13.66
+⭐ BUY #2: MPU
+Stop Loss: $4.52
+Breakout: $4.76
 Risk/Reward: 2.0:1
-(Текущий рост: 24.1%)
+(Текущий рост: 67.6%)
 
-⭐ BUY #3: OSTX
-Stop Loss: $0.87
-Breakout: $0.9199
+⭐ BUY #3: SEAT
+Stop Loss: $1.99
+Breakout: $2.09
 Risk/Reward: 2.0:1
-(Текущий рост: 23.5%)
+(Текущий рост: 63.3%)
 
-⭐ BUY #4: PAL
-Stop Loss: $2.81
-Breakout: $2.96
+⭐ BUY #4: POAS
+Stop Loss: $3.01
+Breakout: $3.17
 Risk/Reward: 2.0:1
-(Текущий рост: 18.9%)
+(Текущий рост: 36.6%)
 
-⭐ BUY #5: TDUP
-Stop Loss: $1.65
-Breakout: $1.74
+⭐ BUY #5: PYXS
+Stop Loss: $1.6
+Breakout: $1.68
 Risk/Reward: 2.0:1
-(Текущий рост: 16.8%)
+(Текущий рост: 19.1%)
 
-⭐ BUY #6: ANVS
-Stop Loss: $0.8
-Breakout: $0.841
+⭐ BUY #6: KRNT
+Stop Loss: $14.01
+Breakout: $14.75
 Risk/Reward: 2.0:1
-(Текущий рост: 13.2%)
+(Текущий рост: 15.5%)
 
-⭐ BUY #7: FSLY
-Stop Loss: $17.0
-Breakout: $17.9
+⭐ BUY #7: OPEN
+Stop Loss: $1.39
+Breakout: $1.46
 Risk/Reward: 2.0:1
-(Текущий рост: 12.6%)
+(Текущий рост: 15.0%)
 
-⭐ BUY #8: MIST
-Stop Loss: $0.44
-Breakout: $0.4604
+⭐ BUY #8: SOAR
+Stop Loss: $0.18
+Breakout: $0.188
 Risk/Reward: 2.0:1
-(Текущий рост: 11.4%)
+(Текущий рост: 13.9%)
 
-⭐ BUY #9: LAES
-Stop Loss: $1.14
-Breakout: $1.2
+⭐ BUY #9: TU
+Stop Loss: $10.24
+Breakout: $10.78
+Risk/Reward: 2.0:1
+(Текущий рост: 13.4%)
+
+⭐ BUY #10: BRBR
+Stop Loss: $14.35
+Breakout: $15.11
 Risk/Reward: 2.0:1
 (Текущий рост: 10.6%)
 
