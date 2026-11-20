@@ -6642,5 +6642,17 @@
   "BOBS": {
     "last_updated": "2026-11-19T19:53:28.270715",
     "in_earnings_season": false
+  },
+  "SG": {
+    "last_updated": "2026-11-20T20:15:49.299533",
+    "in_earnings_season": false
+  },
+  "SGP": {
+    "last_updated": "2026-11-20T20:15:57.328867",
+    "in_earnings_season": false
+  },
+  "STRD": {
+    "last_updated": "2026-11-20T20:18:52.347657",
+    "in_earnings_season": false
   }
 }
